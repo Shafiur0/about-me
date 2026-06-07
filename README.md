@@ -5,8 +5,7 @@ A high-end, premium hybrid developer landing page styled with a combination of *
 ---
 
 ## 🚀 Live Demonstration
-Explore the live build of the portfolio here:
-* **Live Deployment:** [shafiur-rahman-web-portfolio.vercel.app](https://shafiur-rahman-web-portfolio.vercel.app/)
+* **Live Deployment:** [shafiur-rahaman-shafim.vercel.app](https://shafiur-rahaman-shafim.vercel.app/)
 
 ---
 

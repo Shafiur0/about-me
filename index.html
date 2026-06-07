@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shafiur Rahman Shafim | Software Engineer & AI Enthusiast Portfolio</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Official Wikipedia-style cyberpunk portfolio of Shafiur Rahman Shafim - Software Engineering Student at Daffodil International University, AI Enthusiast, Cybersecurity Learner, and Student Leader.">
+    <meta name="keywords" content="Shafiur Rahman Shafim, Software Engineer, AI Enthusiast, Cybersecurity, Daffodil International University, DIU, Bangladesh, Portfolio, Web Developer, Robotics">
+    <meta name="author" content="Shafiur Rahman Shafim">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://github.com/Shafiur0">
+    <meta property="og:title" content="Shafiur Rahman Shafim | Software Engineer Portfolio">
+    <meta property="og:description" content="Explore the portfolio of Shafiur Rahman Shafim: Software Engineering, AI Projects, Cybersecurity, and Student Leadership at DIU.">
+    <meta property="og:image" content="shafim_avatar.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://github.com/Shafiur0">
+    <meta property="twitter:title" content="Shafiur Rahman Shafim | Software Engineer Portfolio">
+    <meta property="twitter:description" content="Explore the portfolio of Shafiur Rahman Shafim: Software Engineering, AI Projects, Cybersecurity, and Student Leadership at DIU.">
+    <meta property="twitter:image" content="shafim_avatar.jpg">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom Style Sheet -->
+    <link rel="stylesheet" href="style.css?v=1.1">
+</head>
+<body>
+
+    <!-- Scroll Progress Indicator -->
+    <div id="scroll-progress" class="scroll-progress-bar"></div>
+
+    <!-- Custom Cursor Glow -->
+    <div id="custom-cursor" class="custom-cursor-glow"></div>
+
+    <!-- Canvas Background for Hero Particles -->
+    <div class="particle-background-container">
+        <canvas id="particle-canvas"></canvas>
+    </div>
+
+    <!-- Wikipedia Cyberpunk Top Navigation Bar -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="header-logo">
+                <i class="fa-solid fa-terminal logo-icon"></i>
+                <span class="logo-text">SHAFIM<span class="logo-accent">_WIKI</span></span>
+            </div>
+            
+            <nav class="main-nav">
+                <a href="#biography" class="nav-link"><span class="nav-num">01.</span> Bio</a>
+                <a href="#skills" class="nav-link"><span class="nav-num">02.</span> Skills</a>
+                <a href="#projects" class="nav-link"><span class="nav-num">03.</span> Projects</a>
+                <a href="#achievements" class="nav-link"><span class="nav-num">04.</span> Achievements</a>
+                <a href="#certificates" class="nav-link"><span class="nav-num">05.</span> Certificates</a>
+                <a href="#contact" class="nav-link"><span class="nav-num">06.</span> Contact</a>
+            </nav>
+
+            <div class="header-actions">
+                <span class="system-status"><span class="status-pulse"></span> ONLINE</span>
+                <a href="#contact" class="btn btn-nav">UPLINK</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-content container">
+        
+        <!-- Hero and Lead Section -->
+        <section class="hero-section reveal-element">
+            <div class="hero-layout">
+                <!-- Left Lead Paragraph & Typewriter Intro -->
+                <div class="hero-intro">
+                    <div class="wiki-tag">ARTICLE // DEVELOPER_PROFILE</div>
+                    <h1 class="main-title">Shafiur Rahman Shafim</h1>
+                    
+                    <div class="typewriter-container">
+                        <span class="terminal-prompt">&gt;</span> <span id="typewriter" class="typewriter-text"></span><span class="cursor-blink">|</span>
+                    </div>
+
+                    <div class="lead-paragraph">
+                        <p>
+                            <strong>Shafiur Rahman Shafim</strong> (born in Bangladesh) is a prominent Bangladeshi software engineering student, AI enthusiast, cybersecurity learner, and student leader. He currently pursues his undergraduate degree in Software Engineering at <a href="https://daffodilvarsity.edu.bd" target="_blank" rel="noopener noreferrer" class="wiki-link">Daffodil International University (DIU)<sup class="citation">[1]</sup></a>. Shafim is widely recognized for his leadership role as the Deputy Secretary of the <strong><a href="https://www.facebook.com/profile.php?id=61561800885287" target="_blank" rel="noopener noreferrer" class="wiki-link">Software Quality Assurance & Testing (SQAT) Club at DIU</a></strong><sup class="citation">[2]</sup>. His expertise spans defensive cybersecurity, smart robotic automation, and generative AI integrations.
+                        </p>
+                        <p>
+                            His early work focuses on architecting secure, scalable cloud systems and developing intelligent agents. He has led multiple student initiatives, secured championships in national cyber showcases, and is actively building products targeting AI healthcare, anonymous cryptography, and software test automation.
+                        </p>
+                    </div>
+
+                    <!-- Wikipedia Style Table of Contents -->
+                    <div class="contents-box">
+                        <div class="contents-header">
+                            <span class="contents-title">Contents</span>
+                            <span class="contents-toggle" onclick="toggleContents()">[hide]</span>
+                        </div>
+                        <ol class="contents-list" id="contents-list">
+                            <li><a href="#biography"><span class="toc-number">1</span> Biography & Leadership</a></li>
+                            <li><a href="#skills"><span class="toc-number">2</span> Tech Stack & Core Skills</a></li>
+                            <li><a href="#projects"><span class="toc-number">3</span> Selected Projects</a></li>
+                            <li><a href="#achievements"><span class="toc-number">4</span> Honors, Awards & Timeline</a></li>
+                            <li><a href="#certificates"><span class="toc-number">5</span> Verification & Certifications</a></li>
+                            <li><a href="#contact"><span class="toc-number">6</span> Secure Communication (Contact)</a></li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- Right Wikipedia Infobox -->
+                <aside class="infobox">
+                    <div class="infobox-header">Quick Facts & Identity</div>
+                    
+                    <div class="infobox-image-container">
+                        <img src="shafim_avatar.jpg" alt="Shafiur Rahman Shafim" class="infobox-image">
+                        <div class="infobox-image-caption">Shafiur Rahman Shafim, Daffodil International University.</div>
+                    </div>
+
+                    <table class="infobox-table">
+                        <tbody>
+                            <tr>
+                                <th scope="row">Full Name</th>
+                                <td>Shafiur Rahman Shafim</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Current Roles</th>
+                                <td>
+                                    Software Engineering Student<br>
+                                    AI Enthusiast & Developer<br>
+                                    Cybersecurity Learner<br>
+                                    Student Leader
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Affiliation</th>
+                                <td>
+                                    <a href="https://daffodilvarsity.edu.bd" target="_blank" rel="noopener noreferrer" class="wiki-link">Daffodil International University (DIU)</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Position</th>
+                                <td><a href="https://www.facebook.com/photo/?fbid=122112039584393362&set=a.122105207846393362&_rdc=1&_rdr#" target="_blank" rel="noopener noreferrer" class="wiki-link">Deputy Secretary, Software Quality Assurance & Testing Club</a></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Location</th>
+                                <td>Bangladesh</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Primary Stack</th>
+                                <td>JavaScript, Next.js, Node.js, Python, TypeScript</td>
+                            </tr>
+                            <tr class="infobox-divider">
+                                <td colspan="2">Network Hub Coordinates</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="infobox-social-cell">
+                                    <div class="infobox-socials">
+                                        <a href="https://github.com/Shafiur0" target="_blank" rel="noopener noreferrer" class="social-btn" title="GitHub">
+                                            <i class="fa-brands fa-github"></i>
+                                        </a>
+                                        <a href="https://www.linkedin.com/in/shafiur-rahman-871683347/" target="_blank" rel="noopener noreferrer" class="social-btn" title="LinkedIn">
+                                            <i class="fa-brands fa-linkedin-in"></i>
+                                        </a>
+                                        <a href="https://www.facebook.com/shafiurrahaman.shafim" target="_blank" rel="noopener noreferrer" class="social-btn" title="Facebook">
+                                            <i class="fa-brands fa-facebook-f"></i>
+                                        </a>
+                                        <a href="https://www.instagram.com/shafiurshafim" target="_blank" rel="noopener noreferrer" class="social-btn" title="Instagram">
+                                            <i class="fa-brands fa-instagram"></i>
+                                        </a>
+                                        <a href="https://x.com/Shafiur792" target="_blank" rel="noopener noreferrer" class="social-btn" title="X (Twitter)">
+                                            <i class="fa-brands fa-x-twitter"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </aside>
+            </div>
+        </section>
+
+        <!-- Section: Biography -->
+        <section id="biography" class="wiki-section reveal-element">
+            <h2 class="section-title">
+                <span class="section-num">01.</span> Biography & Leadership
+                <span class="wiki-edit">[<a href="#contact" class="wiki-edit-link">edit_src</a>]</span>
+            </h2>
+            <div class="section-content">
+                <p>
+                    Shafiur Rahman Shafim has established himself as a prominent student figure at Daffodil International University's Department of Software Engineering. With a keen interest in Artificial Intelligence and Cybersecurity, he works to bridge the gap between academic theory and practical, cutting-edge software solutions.
+                </p>
+                <p>
+                    In May 2026, Shafim was appointed as the <strong>Deputy Secretary of the <a href="https://www.facebook.com/profile.php?id=61561800885287" target="_blank" rel="noopener noreferrer" class="wiki-link">Software Quality Assurance & Testing (SQAT) Club at DIU</a></strong>. In this administrative and leadership role, he oversees the coordination of testing hackathons, workshops on automated test suits, and seminars highlighting best practices in unit, integration, and security-centric testing. His leadership focuses on building a robust community of QA engineers who can ensure the security and stability of national code infrastructures.
+                </p>
+                <div class="quote-box">
+                    <p class="quote-text">
+                        "In an era defined by rapid AI automation, cybersecurity and software quality assurance are not optional overheads—they are the critical parameters that protect digital civilization."
+                    </p>
+                    <span class="quote-author">— S. R. Shafim, DIU Club Assembly Address</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Skills -->
+        <section id="skills" class="wiki-section reveal-element">
+            <h2 class="section-title">
+                <span class="section-num">02.</span> Tech Stack & Core Skills
+                <span class="wiki-edit">[<a href="#contact" class="wiki-edit-link">edit_src</a>]</span>
+            </h2>
+            <div class="section-content">
+                <p>
+                    Shafim's technical skills are categorized below, highlighting specialized development capabilities, programming paradigms, and operational toolsets.
+                </p>
+                
+                <div class="skills-grid">
+                    <!-- Frontend -->
+                    <div class="skill-category-card">
+                        <div class="category-header">
+                            <i class="fa-solid fa-desktop category-icon"></i>
+                            <h3>Frontend Development</h3>
+                        </div>
+                        <div class="badges-container">
+                            <span class="skill-badge"><i class="fa-brands fa-html5"></i> HTML</span>
+                            <span class="skill-badge"><i class="fa-brands fa-css3-alt"></i> CSS</span>
+                            <span class="skill-badge"><i class="fa-brands fa-js"></i> JavaScript</span>
+                            <span class="skill-badge"><i class="fa-solid fa-wind"></i> Tailwind CSS</span>
+                            <span class="skill-badge"><i class="fa-solid fa-n"></i> Next.js</span>
+                        </div>
+                    </div>
+
+                    <!-- Backend -->
+                    <div class="skill-category-card">
+                        <div class="category-header">
+                            <i class="fa-solid fa-server category-icon"></i>
+                            <h3>Backend Architecture</h3>
+                        </div>
+                        <div class="badges-container">
+                            <span class="skill-badge"><i class="fa-brands fa-node-js"></i> Node.js</span>
+                            <span class="skill-badge"><i class="fa-solid fa-bolt"></i> Express.js</span>
+                            <span class="skill-badge"><i class="fa-solid fa-database"></i> Prisma ORM</span>
+                        </div>
+                    </div>
+
+                    <!-- Programming -->
+                    <div class="skill-category-card">
+                        <div class="category-header">
+                            <i class="fa-solid fa-code category-icon"></i>
+                            <h3>Programming Languages</h3>
+                        </div>
+                        <div class="badges-container">
+                            <span class="skill-badge"><i class="fa-brands fa-python"></i> Python</span>
+                            <span class="skill-badge"><i class="fa-brands fa-java"></i> Java</span>
+                            <span class="skill-badge"><i class="fa-solid fa-scroll"></i> TypeScript</span>
+                        </div>
+                    </div>
+
+                    <!-- Database -->
+                    <div class="skill-category-card">
+                        <div class="category-header">
+                            <i class="fa-solid fa-circle-nodes category-icon"></i>
+                            <h3>Database Systems</h3>
+                        </div>
+                        <div class="badges-container">
+                            <span class="skill-badge"><i class="fa-solid fa-elephant"></i> PostgreSQL</span>
+                            <span class="skill-badge"><i class="fa-solid fa-database"></i> MySQL</span>
+                        </div>
+                    </div>
+
+                    <!-- Other -->
+                    <div class="skill-category-card full-width-card">
+                        <div class="category-header">
+                            <i class="fa-solid fa-shield-halved category-icon"></i>
+                            <h3>Other Systems & Specialized Tools</h3>
+                        </div>
+                        <div class="badges-container">
+                            <span class="skill-badge"><i class="fa-brands fa-git-alt"></i> Git</span>
+                            <span class="skill-badge"><i class="fa-brands fa-github"></i> GitHub</span>
+                            <span class="skill-badge"><i class="fa-solid fa-bug-slash"></i> Software Testing</span>
+                            <span class="skill-badge"><i class="fa-solid fa-check-double"></i> Quality Assurance</span>
+                            <span class="skill-badge"><i class="fa-solid fa-user-shield"></i> Cybersecurity</span>
+                            <span class="skill-badge"><i class="fa-solid fa-robot"></i> AI Tools</span>
+                            <span class="skill-badge"><i class="fa-solid fa-wand-magic-sparkles"></i> Prompt Engineering</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Projects -->
+        <section id="projects" class="wiki-section reveal-element">
+            <h2 class="section-title">
+                <span class="section-num">03.</span> Selected Projects
+                <span class="wiki-edit">[<a href="#contact" class="wiki-edit-link">edit_src</a>]</span>
+            </h2>
+            <div class="section-content">
+                <p>
+                    The following section lists notable engineering artifacts developed by Shafiur Rahman Shafim. Toggle the filtering matrix tags to isolate specific focus areas.
+                </p>
+
+                <!-- Dynamic Filter Matrix -->
+                <div class="filter-container">
+                    <button class="filter-btn active" data-filter="all">ALL_PROJECTS</button>
+                    <button class="filter-btn" data-filter="ai">AI_AGENTS</button>
+                    <button class="filter-btn" data-filter="web">WEB_APPS</button>
+                    <button class="filter-btn" data-filter="robotics">ROBOTICS</button>
+                    <button class="filter-btn" data-filter="tools">UTILITIES</button>
+                </div>
+
+                <!-- Projects Card Grid -->
+                <div class="projects-grid" id="projects-grid">
+                    
+                    <!-- AIDoc -->
+                    <div class="project-card" data-categories="ai web">
+                        <div class="project-tags">
+                            <span class="tag tag-ai">AI</span>
+                            <span class="tag tag-web">Web</span>
+                        </div>
+                        <h3 class="project-title"><a href="https://github.com/Shafiur0/AiDoc.s/blob/main/Software%20Requirements%20Specification.pdf" target="_blank" rel="noopener noreferrer">AIDoc <i class="fa-solid fa-arrow-up-right-from-square title-link-icon"></i></a></h3>
+                        <p class="project-desc">AI-powered medical assistant for symptom analysis, treatment suggestions, digital health records, and real-time healthcare recommendations.</p>
+                        <div class="project-footer">
+                            <span class="project-status-code">SYS_ACTIVE</span>
+                        </div>
+                    </div>
+
+                    <!-- Personal Portfolio Website -->
+                    <div class="project-card" data-categories="web">
+                        <div class="project-tags">
+                            <span class="tag tag-web">Web</span>
+                        </div>
+                        <h3 class="project-title"><a href="https://shafiur-rahman-web-portfolio.vercel.app/" target="_blank" rel="noopener noreferrer">Personal Portfolio Website <i class="fa-solid fa-arrow-up-right-from-square title-link-icon"></i></a></h3>
+                        <p class="project-desc">Professional portfolio showcasing journey, achievements, skills, leadership, and projects with high-end cyberpunk & Wikipedia styling.</p>
+                        <div class="project-footer">
+                            <span class="project-status-code">SYS_STABLE</span>
+                        </div>
+                    </div>
+
+                    <!-- Whisper Wall -->
+                    <div class="project-card" data-categories="web">
+                        <div class="project-tags">
+                            <span class="tag tag-web">Web</span>
+                        </div>
+                        <h3 class="project-title"><a href="https://whisper-wall-zeta.vercel.app/" target="_blank" rel="noopener noreferrer">Whisper Wall <i class="fa-solid fa-arrow-up-right-from-square title-link-icon"></i></a></h3>
+                        <p class="project-desc">Fully anonymous web platform for sharing thoughts, confessions, and encrypted public messages without requiring an account.</p>
+                        <div class="project-footer">
+                            <span class="project-status-code">SYS_DEPLOYED</span>
+                        </div>
+                    </div>
+
+                    <!-- FitCheck -->
+                    <div class="project-card" data-categories="web">
+                        <div class="project-tags">
+                            <span class="tag tag-web">Web</span>
+                        </div>
+                        <h3 class="project-title"><a href="https://fitcheck-sand.vercel.app/" target="_blank" rel="noopener noreferrer">FitCheck <i class="fa-solid fa-arrow-up-right-from-square title-link-icon"></i></a></h3>
+                        <p class="project-desc">Fitness and wellness tracking platform with BMI calculator, sleep/water tracking, workout plans, and health analytics. Stack: Next.js, TypeScript, Tailwind CSS, Prisma, PostgreSQL.</p>
+                        <div class="project-footer">
+                            <span class="project-status-code">SYS_STABLE</span>
+                        </div>
+                    </div>
+
+                    <!-- TaskAI -->
+                    <div class="project-card" data-categories="ai web">
+                        <div class="project-tags">
+                            <span class="tag tag-ai">AI</span>
+                            <span class="tag tag-web">Web</span>
+                        </div>
+                        <h3 class="project-title">TaskAI</h3>
+                        <p class="project-desc">AI-powered daily task manager featuring smart auto-organization, personalized recommendations, and dynamic progress tracking dashboards.</p>
+                        <div class="project-footer">
+                            <span class="project-status-code">SYS_ACTIVE</span>
+                        </div>
+                    </div>
+
+                    <!-- Personal AI Assistant (Jarvis) -->
+                    <div class="project-card" data-categories="ai tools">
+                        <div class="project-tags">
+                            <span class="tag tag-ai">AI</span>
+                            <span class="tag tag-tools">Tools</span>
+                        </div>
+                        <h3 class="project-title">Personal AI Assistant (Jarvis)</h3>
+                        <p class="project-desc">Intelligent LLM assistant optimized for automated content generation, instant coding support, general Q&A, and background task automation.</p>
+                        <div class="project-footer">
+                            <span class="project-status-code">SYS_ACTIVE</span>
+                        </div>
+                    </div>
+
+                    <!-- Firefighter Robot (Fenix) -->
+                    <div class="project-card" data-categories="ai robotics">
+                        <div class="project-tags">
+                            <span class="tag tag-ai">AI</span>
+                            <span class="tag tag-robotics">Robotics</span>
+                        </div>
+                        <h3 class="project-title"><a href="https://www.researchgate.net/publication/404012625_Design_Development_and_Experimental_Evaluation_of_a_Low-Cost_Arduino-Based_Autonomous_Firefighter_Robot_for_Early-Stage_Fire_Detection_and_Suppression" target="_blank" rel="noopener noreferrer">Firefighter Robot (Fenix) <i class="fa-solid fa-arrow-up-right-from-square title-link-icon"></i></a></h3>
+                        <p class="project-desc">Autonomous firefighting robot featuring thermal imaging, computer vision pathfinding, and autonomous emergency response mechanisms.</p>
+                        <div class="project-footer">
+                            <span class="project-status-code">SYS_PROTOTYPE</span>
+                        </div>
+                    </div>
+
+                    <!-- Garage Service Management System (GSMS) -->
+                    <div class="project-card" data-categories="web tools">
+                        <div class="project-tags">
+                            <span class="tag tag-web">Web</span>
+                            <span class="tag tag-tools">Tools</span>
+                        </div>
+                        <h3 class="project-title"><a href="https://github.com/Shafiur0/GARAGE-SERVICE-MANAGEMENT-SYSTEM" target="_blank" rel="noopener noreferrer">Garage Service Management System (GSMS) <i class="fa-solid fa-arrow-up-right-from-square title-link-icon"></i></a></h3>
+                        <p class="project-desc">Complete garage platform for customer/vehicle tracking, digital billing, automated invoices, and revenue analytics. Co-contributors: <a href="https://github.com/KAWSHER-HRIDOY" target="_blank" rel="noopener noreferrer" class="contrib-link">KAWSHER-HRIDOY</a> & <a href="https://github.com/ARNOB145" target="_blank" rel="noopener noreferrer" class="contrib-link">ARNOB145</a>.</p>
+                        <div class="project-footer">
+                            <span class="project-status-code">SYS_STABLE</span>
+                        </div>
+                    </div>
+
+                    <!-- Digital Voting System -->
+                    <div class="project-card" data-categories="web">
+                        <div class="project-tags">
+                            <span class="tag tag-web">Web</span>
+                        </div>
+                        <h3 class="project-title"><a href="https://github.com/Shafiur0/Digital-Voting-System" target="_blank" rel="noopener noreferrer">Digital Voting System <i class="fa-solid fa-arrow-up-right-from-square title-link-icon"></i></a></h3>
+                        <p class="project-desc">Secure election management platform featuring visual multi-factor authentication, candidate registers, vote casting, and real-time dashboard analytics.</p>
+                        <div class="project-footer">
+                            <span class="project-status-code">SYS_STABLE</span>
+                        </div>
+                    </div>
+
+                    <!-- Utility Suite -->
+                    <div class="project-card" data-categories="web tools">
+                        <div class="project-tags">
+                            <span class="tag tag-web">Web</span>
+                            <span class="tag tag-tools">Tools</span>
+                        </div>
+                        <h3 class="project-title"><a href="https://github.com/Shafiur0/utility-suite" target="_blank" rel="noopener noreferrer">Utility Suite <i class="fa-solid fa-arrow-up-right-from-square title-link-icon"></i></a></h3>
+                        <p class="project-desc">All-in-one productivity desktop toolkit containing offline BMI calculators, quick mathematical tools, and daily command line utilities.</p>
+                        <div class="project-footer">
+                            <span class="project-status-code">SYS_STABLE</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Achievements -->
+        <section id="achievements" class="wiki-section reveal-element">
+            <h2 class="section-title">
+                <span class="section-num">04.</span> Achievements & Timeline
+                <span class="wiki-edit">[<a href="#contact" class="wiki-edit-link">edit_src</a>]</span>
+            </h2>
+            <div class="section-content">
+                <p>
+                    A chronological breakdown of leadership appointments, competitive championships, and academic milestones achieved by Shafim.
+                </p>
+
+                <!-- Vertical Timeline -->
+                <div class="timeline-container">
+                    
+                    <!-- Item 1 -->
+                    <div class="timeline-item">
+                        <div class="timeline-badge-node"></div>
+                        <div class="timeline-date">May 18, 2026</div>
+                        <div class="timeline-content-card">
+                            <h3 class="timeline-heading"><a href="https://www.facebook.com/photo/?fbid=122112039584393362&set=a.122105207846393362&_rdc=1&_rdr#" target="_blank" rel="noopener noreferrer">Deputy Secretary Appointment <i class="fa-solid fa-arrow-up-right-from-square title-link-icon"></i></a></h3>
+                            <p class="timeline-subtext">Software Quality Assurance & Testing Club (SQAT), Daffodil International University</p>
+                            <p class="timeline-desc">Appointed to handle executive club activities, direct technical testing bootcamps, and facilitate student outreach programs.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="timeline-item">
+                        <div class="timeline-badge-node"></div>
+                        <div class="timeline-date">February 21, 2026</div>
+                        <div class="timeline-content-card">
+                            <h3 class="timeline-heading"><a href="https://www.facebook.com/photo.php?fbid=1328674959293121&set=a.630267692467188&id=100064518890046&rdid=ex6vE3mbIWf8pSN7&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BGaujipyv%2F#" target="_blank" rel="noopener noreferrer">Champion — CSC CYBERWAR (CSAD 2026) <i class="fa-solid fa-arrow-up-right-from-square title-link-icon"></i></a></h3>
+                            <p class="timeline-subtext">Project Showcasing Competition // Team Darktrace3, DIU</p>
+                            <p class="timeline-desc">Awarded First Place for building defensive cyber security showcasing frameworks, analyzing software anomalies under mock threat vector attacks.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="timeline-item">
+                        <div class="timeline-badge-node"></div>
+                        <div class="timeline-date">April 24, 2025</div>
+                        <div class="timeline-content-card">
+                            <h3 class="timeline-heading"><a href="https://www.linkedin.com/posts/shafiur-rahman-871683347_diu-code-trap-programing-contest-certificate-ugcPost-7348639492506877953-lrAM/?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAFbGWRUBab8J6FpJmzeWb2mjCAe3dkBZcs4" target="_blank" rel="noopener noreferrer">27th Position — Codetrap Competitive Programming Contest <i class="fa-solid fa-arrow-up-right-from-square title-link-icon"></i></a></h3>
+                            <p class="timeline-subtext">National Competitive Programming Contest, SEC</p>
+                            <p class="timeline-desc">Competed against programming squads nationwide, solving complex data structural and algorithmic tasks using C++ and Java.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Certificates -->
+        <section id="certificates" class="wiki-section reveal-element">
+            <h2 class="section-title">
+                <span class="section-num">05.</span> Verification & Certifications
+                <span class="wiki-edit">[<a href="#contact" class="wiki-edit-link">edit_src</a>]</span>
+            </h2>
+            <div class="section-content">
+                <p>
+                    The following verified programs substantiate Shafim's academic credentials and continuous technological skill acquisition.
+                </p>
+
+                <div class="certificates-grid">
+                    <!-- Cert 1 -->
+                    <div class="cert-card">
+                        <div class="cert-glow-border"></div>
+                        <div class="cert-icon-container">
+                            <i class="fa-solid fa-graduation-cap cert-icon"></i>
+                        </div>
+                        <h3 class="cert-title"><a href="https://www.linkedin.com/posts/shafiur-rahman-871683347_ai-buildfest2026-cloudcampbangladesh-share-7467257671205715969-QRAs/?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAFbGWRUBab8J6FpJmzeWb2mjCAe3dkBZcs4" target="_blank" rel="noopener noreferrer">Infinity AI Buildfest 2026 <i class="fa-solid fa-arrow-up-right-from-square title-link-icon"></i></a></h3>
+                        <p class="cert-issuer">CloudCamp Bangladesh & BRAC University</p>
+                        <p class="cert-meta">Role: Active Participant & Developer</p>
+                        <div class="cert-date-badge">June 2, 2026</div>
+                    </div>
+
+                    <!-- Cert 2 -->
+                    <div class="cert-card">
+                        <div class="cert-glow-border"></div>
+                        <div class="cert-icon-container">
+                            <i class="fa-solid fa-certificate cert-icon"></i>
+                        </div>
+                        <h3 class="cert-title"><a href="https://www.linkedin.com/posts/shafiur-rahman-871683347_successful-completion-of-object-oriented-activity-7448360395968495616-JKLN/?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAFbGWRUBab8J6FpJmzeWb2mjCAe3dkBZcs4" target="_blank" rel="noopener noreferrer">Object-Oriented Programming in Java <i class="fa-solid fa-arrow-up-right-from-square title-link-icon"></i></a></h3>
+                        <p class="cert-issuer">Simplilearn SkillUp</p>
+                        <p class="cert-meta">Verification ID: <span class="cert-code">1008405</span></p>
+                        <div class="cert-date-badge">April 10, 2026</div>
+                    </div>
+
+                    <!-- Cert 3 -->
+                    <div class="cert-card">
+                        <div class="cert-glow-border"></div>
+                        <div class="cert-icon-container">
+                            <i class="fa-solid fa-award cert-icon"></i>
+                        </div>
+                        <h3 class="cert-title"><a href="https://www.linkedin.com/posts/shafiur-rahman-871683347_diu-code-trap-programing-contest-certificate-activity-7348639493333127168-x84B?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAFbGWRUBab8J6FpJmzeWb2mjCAe3dkBZcs4" target="_blank" rel="noopener noreferrer">Codetrap CP Contest Certificate <i class="fa-solid fa-arrow-up-right-from-square title-link-icon"></i></a></h3>
+                        <p class="cert-issuer">Sylhet Engineering College (SEC)</p>
+                        <p class="cert-meta">Performance: Ranked 27th Nationally</p>
+                        <div class="cert-date-badge">April 24, 2025</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Contact -->
+        <section id="contact" class="wiki-section reveal-element">
+            <h2 class="section-title">
+                <span class="section-num">06.</span> Secure Communication (Contact)
+                <span class="wiki-edit">[<a href="#contact" class="wiki-edit-link">edit_src</a>]</span>
+            </h2>
+            <div class="section-content">
+                <div class="contact-layout">
+                    <!-- Left: Direct Coordinates Links -->
+                    <div class="contact-info">
+                        <h3 class="contact-info-title">System Coordinates</h3>
+                        <p>Initialize a secure session via one of the following direct pathways:</p>
+                        
+                        <div class="contact-links-grid">
+                            <!-- Email -->
+                            <a href="mailto:shafiurrahman067@gmail.com" class="contact-link-card">
+                                <i class="fa-solid fa-envelope contact-link-icon"></i>
+                                <div class="contact-link-details">
+                                    <span class="contact-link-label">EMAIL_UPLINK</span>
+                                    <span class="contact-link-val">shafiurrahman067@gmail.com</span>
+                                </div>
+                            </a>
+
+                            <!-- Phone -->
+                            <a href="tel:+8801944023602" class="contact-link-card">
+                                <i class="fa-solid fa-phone contact-link-icon"></i>
+                                <div class="contact-link-details">
+                                    <span class="contact-link-label">SECURE_VOICE</span>
+                                    <span class="contact-link-val">+880 1944-023602</span>
+                                </div>
+                            </a>
+
+                            <!-- WhatsApp -->
+                            <a href="https://wa.me/8801758958055" target="_blank" rel="noopener noreferrer" class="contact-link-card">
+                                <i class="fa-brands fa-whatsapp contact-link-icon"></i>
+                                <div class="contact-link-details">
+                                    <span class="contact-link-label">SECURE_CHAT</span>
+                                    <span class="contact-link-val">WhatsApp Link</span>
+                                </div>
+                            </a>
+
+                            <!-- GitHub -->
+                            <a href="https://github.com/Shafiur0" target="_blank" rel="noopener noreferrer" class="contact-link-card">
+                                <i class="fa-brands fa-github contact-link-icon"></i>
+                                <div class="contact-link-details">
+                                    <span class="contact-link-label">CODE_REPOS</span>
+                                    <span class="contact-link-val">github.com/Shafiur0</span>
+                                </div>
+                            </a>
+
+                            <!-- LinkedIn -->
+                            <a href="https://www.linkedin.com/in/shafiur-rahman-871683347/" target="_blank" rel="noopener noreferrer" class="contact-link-card">
+                                <i class="fa-brands fa-linkedin-in contact-link-icon"></i>
+                                <div class="contact-link-details">
+                                    <span class="contact-link-label">PROFESSIONAL_NET</span>
+                                    <span class="contact-link-val">LinkedIn Profile</span>
+                                </div>
+                            </a>
+
+                            <!-- Facebook -->
+                            <a href="https://www.facebook.com/shafiurrahaman.shafim" target="_blank" rel="noopener noreferrer" class="contact-link-card">
+                                <i class="fa-brands fa-facebook-f contact-link-icon"></i>
+                                <div class="contact-link-details">
+                                    <span class="contact-link-label">SOCIAL_FACEBOOK</span>
+                                    <span class="contact-link-val">Facebook Profile</span>
+                                </div>
+                            </a>
+
+                            <!-- Instagram -->
+                            <a href="https://www.instagram.com/shafiurshafim" target="_blank" rel="noopener noreferrer" class="contact-link-card">
+                                <i class="fa-brands fa-instagram contact-link-icon"></i>
+                                <div class="contact-link-details">
+                                    <span class="contact-link-label">SOCIAL_INSTAGRAM</span>
+                                    <span class="contact-link-val">Instagram Profile</span>
+                                </div>
+                            </a>
+
+                            <!-- X (Twitter) -->
+                            <a href="https://x.com/Shafiur792" target="_blank" rel="noopener noreferrer" class="contact-link-card">
+                                <i class="fa-brands fa-x-twitter contact-link-icon"></i>
+                                <div class="contact-link-details">
+                                    <span class="contact-link-label">SOCIAL_X</span>
+                                    <span class="contact-link-val">X (Twitter) Profile</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right: Static contact form using mailto on submit -->
+                    <div class="contact-form-container">
+                        <h3 class="form-title">Transmit Node Message</h3>
+                        
+                        <form id="contact-form" class="contact-form">
+                            <!-- Name -->
+                            <div class="form-group">
+                                <label for="form-name" class="form-label">IDENTITY / NAME</label>
+                                <div class="input-wrapper">
+                                    <span class="input-icon"><i class="fa-solid fa-user"></i></span>
+                                    <input type="text" id="form-name" class="form-input" placeholder="e.g. Capt. Gibson" required>
+                                </div>
+                                <span class="error-msg" id="name-error">Name must be at least 2 characters.</span>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="form-group">
+                                <label for="form-email" class="form-label">ENVELOPE / EMAIL</label>
+                                <div class="input-wrapper">
+                                    <span class="input-icon"><i class="fa-solid fa-envelope"></i></span>
+                                    <input type="email" id="form-email" class="form-input" placeholder="e.g. gibson@matrix.net" required>
+                                </div>
+                                <span class="error-msg" id="email-error">Please enter a valid email address.</span>
+                            </div>
+
+                            <!-- Message -->
+                            <div class="form-group">
+                                <label for="form-message" class="form-label">TRANSMISSION / MESSAGE</label>
+                                <div class="input-wrapper text-area-wrapper">
+                                    <span class="input-icon"><i class="fa-solid fa-comment-dots"></i></span>
+                                    <textarea id="form-message" class="form-input form-textarea" placeholder="Input transmission data here..." required></textarea>
+                                </div>
+                                <span class="error-msg" id="message-error">Message must be at least 10 characters.</span>
+                            </div>
+
+                            <button type="submit" class="btn btn-submit">
+                                <i class="fa-solid fa-paper-plane btn-icon"></i> SEND_TRANSMISSION
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container container">
+            <div class="footer-left">
+                <div class="footer-logo">
+                    <i class="fa-solid fa-terminal logo-icon"></i>
+                    <span>SHAFIM<span class="logo-accent">_WIKI</span></span>
+                </div>
+                <p class="footer-tagline">"Building the future, one line of code at a time"</p>
+            </div>
+            
+            <div class="footer-middle">
+                <p class="footer-copyright">
+                    Text is available under the Cyber-Creative Commons Attribution-ShareAlike License; additional terms may apply. Powered by static client vectors.
+                </p>
+                <div class="developer-credit">
+                    <i class="fa-solid fa-crown credit-icon"></i> Developed by <span class="credit-name">Shafiur Rahman Shafim</span> <span class="credit-code-accent">&lt;/&gt;</span>
+                </div>
+                <p class="footer-date">Current epoch local time: <span id="footer-time">2026-06-07 14:01:48</span></p>
+            </div>
+
+            <div class="footer-right">
+                <div class="footer-socials">
+                    <a href="https://github.com/Shafiur0" target="_blank" rel="noopener noreferrer" class="footer-social-link"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/shafiur-rahman-871683347/" target="_blank" rel="noopener noreferrer" class="footer-social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://www.facebook.com/shafiurrahaman.shafim" target="_blank" rel="noopener noreferrer" class="footer-social-link"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/shafiurshafim" target="_blank" rel="noopener noreferrer" class="footer-social-link"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://x.com/Shafiur792" target="_blank" rel="noopener noreferrer" class="footer-social-link"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- References & Footnotes section styled exactly like Wikipedia -->
+    <section class="references-footer container reveal-element">
+        <div class="ref-title-bar">References</div>
+        <ol class="references-list">
+            <li id="cite_note-1">
+                <span class="mw-cite-backlink"><a href="#biography">^</a></span> 
+                <span class="reference-text">"Department of Software Engineering", <a href="https://daffodilvarsity.edu.bd" target="_blank" rel="noopener noreferrer" class="wiki-link">Daffodil International University (DIU)</a>, Dhaka, Bangladesh. Official curriculum.</span>
+            </li>
+            <li id="cite_note-2">
+                <span class="mw-cite-backlink"><a href="#biography">^</a></span> 
+                <span class="reference-text">Executive Board Registry, <a href="https://www.facebook.com/profile.php?id=61561800885287" target="_blank" rel="noopener noreferrer" class="wiki-link">Software Quality Assurance & Testing Club (SQAT), DIU</a>, <a href="https://www.facebook.com/photo/?fbid=122112039584393362&set=a.122105207846393362&_rdc=1&_rdr#" target="_blank" rel="noopener noreferrer" class="wiki-link">Appointed May 2026</a>.</span>
+            </li>
+        </ol>
+    </section>
+
+    <!-- Custom Script -->
+    <script src="script.js"></script>
+</body>
+</html>

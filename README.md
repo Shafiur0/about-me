@@ -7,6 +7,18 @@ A high-end, premium hybrid developer landing page styled with a combination of *
 ## 🚀 Live Demonstration
 * **Live Deployment:** [shafiur-rahaman-shafim.vercel.app](https://shafiur-rahaman-shafim.vercel.app/)
 
+### 📸 Visual Preview
+Here is how the hybrid Wikipedia-Cyberpunk interface renders in production:
+
+#### 1. Main Hero & Info Grid
+![Main Hero & Info Grid](./vercel_hero_section.png)
+
+#### 2. Quick Facts Infobox
+![Quick Facts Infobox](./vercel_infobox.png)
+
+#### 3. Simplified King-Logo Footer
+![King-Logo Footer](./vercel_footer.png)
+
 ---
 
 ## 🎨 Visual Identity & Theme

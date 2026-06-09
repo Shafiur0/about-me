@@ -31,7 +31,8 @@ I have refined the hybrid Wikipedia-Cyberpunk landing page for **Shafiur Rahman 
 - Added the promotion/appointment link pointing to the Facebook photo post within Reference #2 for "Appointed May 2026".
 
 ### 7. Google Site Verification
-- Created the Google Search Console verification file [google864630410e5d0d5f.html](file:///d:/about%20me/google864630410e5d0d5f.html) in the root directory.
+- Added the Google site verification meta tag `<meta name="google-site-verification" content="HfGjhHQo8b99qjy9jC3gZS1ObVFfgmWdEdEYsEk9HL4" />` to the `<head>` of [index.html](file:///d:/about%20me/index.html).
+- Removed the deprecated HTML verification file (`google864630410e5d0d5f.html`).
 - Committed and successfully pushed the changes to the remote repository so the site updates and verification can be finalized.
 
 ---

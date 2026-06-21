@@ -721,6 +721,7 @@ function initCliTerminal() {
     let isDragging = false;
     let startX, startY, initialLeft, initialTop;
 
+    // Mouse events
     header.addEventListener('mousedown', (e) => {
         if (e.target.closest('.terminal-header-right')) return;
         isDragging = true;
@@ -746,6 +747,36 @@ function initCliTerminal() {
     });
 
     document.addEventListener('mouseup', () => {
+        isDragging = false;
+    });
+
+    // Touch events for mobile/tablet drag support
+    header.addEventListener('touchstart', (e) => {
+        if (e.target.closest('.terminal-header-right')) return;
+        isDragging = true;
+        const touch = e.touches[0];
+        startX = touch.clientX;
+        startY = touch.clientY;
+        const rect = term.getBoundingClientRect();
+        initialLeft = rect.left;
+        initialTop = rect.top;
+        
+        term.style.right = 'auto';
+        term.style.bottom = 'auto';
+        term.style.left = initialLeft + 'px';
+        term.style.top = initialTop + 'px';
+    });
+
+    document.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        const touch = e.touches[0];
+        const dx = touch.clientX - startX;
+        const dy = touch.clientY - startY;
+        term.style.left = (initialLeft + dx) + 'px';
+        term.style.top = (initialTop + dy) + 'px';
+    });
+
+    document.addEventListener('touchend', () => {
         isDragging = false;
     });
 

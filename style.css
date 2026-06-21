@@ -1587,7 +1587,8 @@ a:hover {
 .radar-chart-wrapper {
     width: 100%;
     max-width: 300px;
-    height: 300px;
+    aspect-ratio: 1 / 1;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2279,5 +2280,81 @@ a:hover {
     .terminal-toggle-btn {
         right: 10px;
         bottom: 10px;
+    }
+}
+
+/* ==========================================================================
+   Global Responsiveness Adjustments (All Viewports: Phones & Tablets)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* Fluid typography for heading elements */
+    .main-title {
+        font-size: 2.25rem !important;
+    }
+    .section-title {
+        font-size: 1.4rem !important;
+    }
+    .hero-section {
+        padding: 1.5rem 0;
+    }
+    
+    /* Layout structural spacing */
+    .container {
+        padding: 0 1rem;
+    }
+    
+    /* Prevent table columns overflow */
+    .infobox-table th {
+        font-size: 0.75rem;
+    }
+    .infobox-table td {
+        font-size: 0.75rem;
+        word-break: break-word;
+    }
+    
+    /* Modal container sizing for smaller screen views */
+    .modal-content {
+        padding: 1.25rem;
+        max-width: 95%;
+    }
+    .citation-output-box pre {
+        padding: 0.8rem;
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Fluid typography for small phones */
+    .main-title {
+        font-size: 1.85rem !important;
+    }
+    .typewriter-container {
+        font-size: 0.95rem;
+    }
+    .section-title {
+        font-size: 1.25rem !important;
+    }
+    
+    /* Box padding reductions to avoid screen margins overflow */
+    .skills-chart-box, 
+    .cipher-sandbox-card,
+    .contact-form-container {
+        padding: 1rem !important;
+    }
+    
+    /* Center text in cards */
+    .project-card, .timeline-content-card, .cert-card {
+        padding: 1rem !important;
+    }
+    
+    /* Scale SVG Radar chart text labels size */
+    .radar-axis-label {
+        font-size: 10px;
+    }
+    
+    /* Sandbox controllers stack vertically */
+    .sandbox-controls {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
     }
 }

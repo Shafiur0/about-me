@@ -26,6 +26,14 @@ I have successfully designed, built, and verified five premium interactive featu
 - **What it does:** Positions a floating, minimized terminal widget in the bottom-right corner. It is draggable by its header bar and supports minimize, maximize, and close commands. Supports keyboard input commands: `help`, `bio`, `skills`, `projects`, `clear`, and `hack` (starts a streaming Matrix green rain screensaver).
 - **Files Modified:** [index.html](file:///d:/about%20me/index.html), [style.css](file:///d:/about%20me/style.css), [script.js](file:///d:/about%20me/script.js)
 
+### 6. 📱 Mobile & Tablet Responsiveness Enhancements
+- **What it does:** Ensures 100% responsiveness and fluid scaling on all viewports:
+  - Added fluid typography rules for titles and section headings on small screens to prevent clipping or layout wrapping.
+  - Set the SVG Skills Radar Chart parent wrapper to `aspect-ratio: 1/1` and `height: auto` to allow auto-responsive chart resizing on small viewports.
+  - Reduced grid gaps and card paddings on devices below 480px.
+  - Enabled full **Touch Drag support** on the Cyberpunk CLI Terminal so mobile and tablet touch-screen users can drag the terminal interface anywhere.
+- **Files Modified:** [style.css](file:///d:/about%20me/style.css), [script.js](file:///d:/about%20me/script.js)
+
 ---
 
 ## 🚀 Live Production URL

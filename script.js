@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initFooterTime();
     
     // New Feature Initializers
-    initViewHistory();
     initRadarChart();
     initCipherSandbox();
     initDykWidget();
@@ -388,49 +387,6 @@ function initFooterTime() {
     updateTime(); // initial load execution
 }
 
-/* ==========================================================================
-   Wikipedia View History logic
-   ========================================================================== */
-function initViewHistory() {
-    const historyBtn = document.getElementById('view-history-btn');
-    const historySection = document.getElementById('revision-history-section');
-    const closeBtn = document.getElementById('close-history-btn');
-    const list = document.getElementById('revision-list');
-
-    if (!historyBtn || !historySection || !list) return;
-
-    const revisionData = [
-        { date: "2026-06-21 21:38:22", user: "srprogramme830-6235", size: "+32490", type: "plus", comment: "Deploy interactive components: SVG skill radar chart, decryption matrix sandbox, citation modal, and secure shell terminal." },
-        { date: "2026-06-21 21:23:22", user: "srprogramme830-6235", size: "+876", type: "plus", comment: "Add 1st Runner-Up at ICADHI IEEE Congress to achievements list and connect citation link #3." },
-        { date: "2026-06-13 01:50:27", user: "Shafiur0", size: "+12", type: "plus", comment: "Update LinkedIn profile link to the correct handle." },
-        { date: "2026-06-09 10:41:29", user: "Shafiur0", size: "-31", type: "minus", comment: "Switch Google verification to HTML tag method." },
-        { date: "2026-06-09 10:40:05", user: "Shafiur0", size: "+152", type: "plus", comment: "Add Google site verification file." },
-        { date: "2026-06-07 14:01:48", user: "Shafiur0", size: "+12840", type: "plus", comment: "Complete Wikipedia-Cyberpunk Portfolio layout, citations, and external resource coordinates." }
-    ];
-
-    // Populate list
-    list.innerHTML = revisionData.map(rev => `
-        <li class="revision-item">
-            <span class="rev-date">${rev.date}</span>
-            <span class="rev-user">${rev.user}</span>
-            <span class="rev-size ${rev.type}">${rev.size}</span>
-            <span class="rev-comment">(${rev.comment})</span>
-        </li>
-    `).join('');
-
-    historyBtn.addEventListener('click', () => {
-        if (historySection.style.display === 'none') {
-            historySection.style.display = 'block';
-            historySection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        } else {
-            historySection.style.display = 'none';
-        }
-    });
-
-    closeBtn.addEventListener('click', () => {
-        historySection.style.display = 'none';
-    });
-}
 
 /* ==========================================================================
    SVG Skills Radar Chart

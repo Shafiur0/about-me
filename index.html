@@ -83,6 +83,31 @@
                 <div class="hero-intro">
                     <div class="wiki-tag">ARTICLE // DEVELOPER_PROFILE</div>
                     <h1 class="main-title">Shafiur Rahman Shafim</h1>
+
+                    <!-- Wikipedia Action Tabs Bar -->
+                    <div class="wiki-actions-bar">
+                        <div class="wiki-actions-left">
+                            <span class="wiki-action-tab active">Article</span>
+                            <span class="wiki-action-tab">Discussion</span>
+                        </div>
+                        <div class="wiki-actions-right">
+                            <span class="wiki-action-tab active">Read</span>
+                            <span class="wiki-action-tab">View source</span>
+                            <button class="wiki-action-tab" id="view-history-btn"><i class="fa-solid fa-clock-rotate-left"></i> View history</button>
+                        </div>
+                    </div>
+
+                    <!-- Revision History Collapsible Section -->
+                    <div id="revision-history-section" class="revision-history-box" style="display: none;">
+                        <div class="rev-history-header">
+                            <span class="rev-history-title"><i class="fa-solid fa-clock-rotate-left"></i> Revision History: Shafiur Rahman Shafim</span>
+                            <button id="close-history-btn" class="rev-close-btn">&times;</button>
+                        </div>
+                        <div class="rev-history-subtitle">Tracked version control logs for this profile.</div>
+                        <ul class="revision-list" id="revision-list">
+                            <!-- Populated dynamically via JS -->
+                        </ul>
+                    </div>
                     
                     <div class="typewriter-container">
                         <span class="terminal-prompt">&gt;</span> <span id="typewriter" class="typewriter-text"></span><span class="cursor-blink">|</span>
@@ -180,9 +205,29 @@
                                     </div>
                                 </td>
                             </tr>
+                            <tr class="infobox-tool-row">
+                                <th scope="row">Toolbox</th>
+                                <td>
+                                    <button id="cite-article-btn" class="wiki-cite-btn"><i class="fa-solid fa-quote-left"></i> Cite this article</button>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </aside>
+
+                <!-- Did You Know Sidebar Widget -->
+                <div class="dyk-box wiki-sidebar-box">
+                    <div class="dyk-header">
+                        <i class="fa-solid fa-lightbulb dyk-icon"></i>
+                        <span>Did you know...</span>
+                    </div>
+                    <div class="dyk-content">
+                        <p id="dyk-text">...that Shafim led Team Cortex Crew to 1st Runner-Up at the ICADHI IEEE International Congress?</p>
+                    </div>
+                    <div class="dyk-footer">
+                        <button id="dyk-next-btn" class="dyk-btn"><i class="fa-solid fa-angles-right"></i> Next Fact</button>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -219,74 +264,124 @@
                     Shafim's technical skills are categorized below, highlighting specialized development capabilities, programming paradigms, and operational toolsets.
                 </p>
                 
-                <div class="skills-grid">
-                    <!-- Frontend -->
-                    <div class="skill-category-card">
-                        <div class="category-header">
-                            <i class="fa-solid fa-desktop category-icon"></i>
-                            <h3>Frontend Development</h3>
-                        </div>
-                        <div class="badges-container">
-                            <span class="skill-badge"><i class="fa-brands fa-html5"></i> HTML</span>
-                            <span class="skill-badge"><i class="fa-brands fa-css3-alt"></i> CSS</span>
-                            <span class="skill-badge"><i class="fa-brands fa-js"></i> JavaScript</span>
-                            <span class="skill-badge"><i class="fa-solid fa-wind"></i> Tailwind CSS</span>
-                            <span class="skill-badge"><i class="fa-solid fa-n"></i> Next.js</span>
+                <div class="skills-layout-container">
+                    <div class="skills-left-col">
+                        <div class="skills-grid">
+                            <!-- Frontend -->
+                            <div class="skill-category-card">
+                                <div class="category-header">
+                                    <i class="fa-solid fa-desktop category-icon"></i>
+                                    <h3>Frontend Development</h3>
+                                </div>
+                                <div class="badges-container">
+                                    <span class="skill-badge"><i class="fa-brands fa-html5"></i> HTML</span>
+                                    <span class="skill-badge"><i class="fa-brands fa-css3-alt"></i> CSS</span>
+                                    <span class="skill-badge"><i class="fa-brands fa-js"></i> JavaScript</span>
+                                    <span class="skill-badge"><i class="fa-solid fa-wind"></i> Tailwind CSS</span>
+                                    <span class="skill-badge"><i class="fa-solid fa-n"></i> Next.js</span>
+                                </div>
+                            </div>
+
+                            <!-- Backend -->
+                            <div class="skill-category-card">
+                                <div class="category-header">
+                                    <i class="fa-solid fa-server category-icon"></i>
+                                    <h3>Backend Architecture</h3>
+                                </div>
+                                <div class="badges-container">
+                                    <span class="skill-badge"><i class="fa-brands fa-node-js"></i> Node.js</span>
+                                    <span class="skill-badge"><i class="fa-solid fa-bolt"></i> Express.js</span>
+                                    <span class="skill-badge"><i class="fa-solid fa-database"></i> Prisma ORM</span>
+                                </div>
+                            </div>
+
+                            <!-- Programming -->
+                            <div class="skill-category-card">
+                                <div class="category-header">
+                                    <i class="fa-solid fa-code category-icon"></i>
+                                    <h3>Programming Languages</h3>
+                                </div>
+                                <div class="badges-container">
+                                    <span class="skill-badge"><i class="fa-brands fa-python"></i> Python</span>
+                                    <span class="skill-badge"><i class="fa-brands fa-java"></i> Java</span>
+                                    <span class="skill-badge"><i class="fa-solid fa-scroll"></i> TypeScript</span>
+                                </div>
+                            </div>
+
+                            <!-- Database -->
+                            <div class="skill-category-card">
+                                <div class="category-header">
+                                    <i class="fa-solid fa-circle-nodes category-icon"></i>
+                                    <h3>Database Systems</h3>
+                                </div>
+                                <div class="badges-container">
+                                    <span class="skill-badge"><i class="fa-solid fa-elephant"></i> PostgreSQL</span>
+                                    <span class="skill-badge"><i class="fa-solid fa-database"></i> MySQL</span>
+                                </div>
+                            </div>
+
+                            <!-- Other -->
+                            <div class="skill-category-card full-width-card">
+                                <div class="category-header">
+                                    <i class="fa-solid fa-shield-halved category-icon"></i>
+                                    <h3>Other Systems & Specialized Tools</h3>
+                                </div>
+                                <div class="badges-container">
+                                    <span class="skill-badge"><i class="fa-brands fa-git-alt"></i> Git</span>
+                                    <span class="skill-badge"><i class="fa-brands fa-github"></i> GitHub</span>
+                                    <span class="skill-badge"><i class="fa-solid fa-bug-slash"></i> Software Testing</span>
+                                    <span class="skill-badge"><i class="fa-solid fa-check-double"></i> Quality Assurance</span>
+                                    <span class="skill-badge"><i class="fa-solid fa-user-shield"></i> Cybersecurity</span>
+                                    <span class="skill-badge"><i class="fa-solid fa-robot"></i> AI Tools</span>
+                                    <span class="skill-badge"><i class="fa-solid fa-wand-magic-sparkles"></i> Prompt Engineering</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-                    <!-- Backend -->
-                    <div class="skill-category-card">
-                        <div class="category-header">
-                            <i class="fa-solid fa-server category-icon"></i>
-                            <h3>Backend Architecture</h3>
-                        </div>
-                        <div class="badges-container">
-                            <span class="skill-badge"><i class="fa-brands fa-node-js"></i> Node.js</span>
-                            <span class="skill-badge"><i class="fa-solid fa-bolt"></i> Express.js</span>
-                            <span class="skill-badge"><i class="fa-solid fa-database"></i> Prisma ORM</span>
+                    
+                    <div class="skills-right-col">
+                        <div class="skills-chart-box">
+                            <h3 class="chart-box-title"><i class="fa-solid fa-chart-pie"></i> Interactive Skill Matrix</h3>
+                            <div class="radar-chart-wrapper">
+                                <svg id="skills-radar-chart" viewBox="0 0 400 400" width="100%" height="100%"></svg>
+                            </div>
+                            <div class="chart-legend" id="chart-legend"></div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Programming -->
-                    <div class="skill-category-card">
-                        <div class="category-header">
-                            <i class="fa-solid fa-code category-icon"></i>
-                            <h3>Programming Languages</h3>
-                        </div>
-                        <div class="badges-container">
-                            <span class="skill-badge"><i class="fa-brands fa-python"></i> Python</span>
-                            <span class="skill-badge"><i class="fa-brands fa-java"></i> Java</span>
-                            <span class="skill-badge"><i class="fa-solid fa-scroll"></i> TypeScript</span>
-                        </div>
+                <!-- Decryption Cipher Sandbox -->
+                <div class="cipher-sandbox-card">
+                    <div class="sandbox-header">
+                        <i class="fa-solid fa-shield-halved sandbox-icon"></i>
+                        <h3>Cybersecurity Sandbox // Decryption Matrix</h3>
                     </div>
-
-                    <!-- Database -->
-                    <div class="skill-category-card">
-                        <div class="category-header">
-                            <i class="fa-solid fa-circle-nodes category-icon"></i>
-                            <h3>Database Systems</h3>
+                    <div class="sandbox-body">
+                        <div class="sandbox-input-group">
+                            <label for="cipher-input" class="sandbox-label">INPUT_TRANSMISSION</label>
+                            <input type="text" id="cipher-input" class="sandbox-input" placeholder="Type text to encrypt/decrypt..." value="Initiate Uplink Protocol">
                         </div>
-                        <div class="badges-container">
-                            <span class="skill-badge"><i class="fa-solid fa-elephant"></i> PostgreSQL</span>
-                            <span class="skill-badge"><i class="fa-solid fa-database"></i> MySQL</span>
+                        <div class="sandbox-controls">
+                            <div class="control-item">
+                                <label for="cipher-type" class="sandbox-label">CIPHER_ALGORITHM</label>
+                                <select id="cipher-type" class="sandbox-select">
+                                    <option value="rot13">ROT13 (Substitution)</option>
+                                    <option value="base64">Base64 (Encoding)</option>
+                                    <option value="binary">Binary (ASCII representation)</option>
+                                    <option value="hex">Hexadecimal</option>
+                                </select>
+                            </div>
+                            <div class="control-item">
+                                <span class="sandbox-label">PROCESS_STATUS</span>
+                                <span class="sandbox-status" id="cipher-status"><span class="status-pulse-green"></span> IDLE</span>
+                            </div>
                         </div>
-                    </div>
-
-                    <!-- Other -->
-                    <div class="skill-category-card full-width-card">
-                        <div class="category-header">
-                            <i class="fa-solid fa-shield-halved category-icon"></i>
-                            <h3>Other Systems & Specialized Tools</h3>
-                        </div>
-                        <div class="badges-container">
-                            <span class="skill-badge"><i class="fa-brands fa-git-alt"></i> Git</span>
-                            <span class="skill-badge"><i class="fa-brands fa-github"></i> GitHub</span>
-                            <span class="skill-badge"><i class="fa-solid fa-bug-slash"></i> Software Testing</span>
-                            <span class="skill-badge"><i class="fa-solid fa-check-double"></i> Quality Assurance</span>
-                            <span class="skill-badge"><i class="fa-solid fa-user-shield"></i> Cybersecurity</span>
-                            <span class="skill-badge"><i class="fa-solid fa-robot"></i> AI Tools</span>
-                            <span class="skill-badge"><i class="fa-solid fa-wand-magic-sparkles"></i> Prompt Engineering</span>
+                        <div class="sandbox-output-group">
+                            <label class="sandbox-label">OUTPUT_MATRIX</label>
+                            <div class="sandbox-output-wrapper">
+                                <span class="output-prompt">&gt;</span>
+                                <span id="cipher-output" class="sandbox-output"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -744,6 +839,69 @@
             </li>
         </ol>
     </section>
+
+    <!-- Citation Modal -->
+    <div id="cite-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content reveal-modal">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-quote-right"></i> Cite: Shafiur Rahman Shafim</h3>
+                <button id="close-cite-modal" class="modal-close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-desc">Copy the pre-formatted citation styles below to cite this profile in your reports or academic documents:</p>
+                <div class="modal-tabs">
+                    <button class="modal-tab-btn active" data-style="ieee">IEEE</button>
+                    <button class="modal-tab-btn" data-style="bibtex">BibTeX</button>
+                    <button class="modal-tab-btn" data-style="apa">APA</button>
+                    <button class="modal-tab-btn" data-style="mla">MLA</button>
+                </div>
+                <div class="citation-output-box">
+                    <pre id="citation-text"></pre>
+                    <button id="copy-citation-btn" class="btn btn-copy"><i class="fa-regular fa-copy"></i> COPY_TO_CLIPBOARD</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Collapsible Cyberpunk CLI Terminal -->
+    <div id="terminal-widget" class="terminal-container minimized">
+        <div class="terminal-header" id="terminal-drag">
+            <div class="terminal-header-left">
+                <i class="fa-solid fa-terminal term-icon"></i>
+                <span class="terminal-title">SHAFIM_SECURE_SHELL v1.0.4</span>
+            </div>
+            <div class="terminal-header-right">
+                <button id="term-min-btn" class="term-btn term-min"><i class="fa-solid fa-window-minimize"></i></button>
+                <button id="term-max-btn" class="term-btn term-max"><i class="fa-solid fa-window-maximize"></i></button>
+                <button id="term-close-btn" class="term-btn term-close">&times;</button>
+            </div>
+        </div>
+        
+        <div class="terminal-body" id="terminal-body">
+            <div class="terminal-welcome">
+                <pre class="terminal-banner">
+███████ ██   ██  █████  ██████  ██ ███    ███ 
+██      ██   ██ ██   ██ ██   ██ ██ ████  ████ 
+███████ ███████ ███████ ██████  ██ ██ ████ ██ 
+     ██ ██   ██ ██   ██ ██      ██ ██  ██  ██ 
+███████ ██   ██ ██   ██ ██      ██ ██      ██ 
+                </pre>
+                <p>Welcome to the secure node interface. Connection: encrypted.</p>
+                <p>Type <span class="term-highlight">help</span> to view all available commands.</p>
+            </div>
+            <div id="terminal-history" class="terminal-history"></div>
+            <div class="terminal-input-line">
+                <span class="terminal-prompt">guest@shafim_wiki:~$.</span>
+                <input type="text" id="terminal-input" class="terminal-input" autofocus autocomplete="off" spellcheck="false">
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Toggle Button for Terminal when closed -->
+    <button id="terminal-toggle-btn" class="terminal-toggle-btn" style="display: flex;">
+        <i class="fa-solid fa-terminal"></i>
+        <span>&gt;_ UPLINK_SHELL</span>
+    </button>
 
     <!-- Custom Script -->
     <script src="script.js"></script>

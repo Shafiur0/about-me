@@ -13,6 +13,14 @@ document.addEventListener('DOMContentLoaded', () => {
     initContactForm();
     initWikiContents();
     initFooterTime();
+    
+    // New Feature Initializers
+    initViewHistory();
+    initRadarChart();
+    initCipherSandbox();
+    initDykWidget();
+    initCitationModal();
+    initCliTerminal();
 });
 
 /* ==========================================================================
@@ -378,4 +386,583 @@ function initFooterTime() {
 
     setInterval(updateTime, 1000);
     updateTime(); // initial load execution
+}
+
+/* ==========================================================================
+   Wikipedia View History logic
+   ========================================================================== */
+function initViewHistory() {
+    const historyBtn = document.getElementById('view-history-btn');
+    const historySection = document.getElementById('revision-history-section');
+    const closeBtn = document.getElementById('close-history-btn');
+    const list = document.getElementById('revision-list');
+
+    if (!historyBtn || !historySection || !list) return;
+
+    const revisionData = [
+        { date: "2026-06-21 21:38:22", user: "srprogramme830-6235", size: "+32490", type: "plus", comment: "Deploy interactive components: SVG skill radar chart, decryption matrix sandbox, citation modal, and secure shell terminal." },
+        { date: "2026-06-21 21:23:22", user: "srprogramme830-6235", size: "+876", type: "plus", comment: "Add 1st Runner-Up at ICADHI IEEE Congress to achievements list and connect citation link #3." },
+        { date: "2026-06-13 01:50:27", user: "Shafiur0", size: "+12", type: "plus", comment: "Update LinkedIn profile link to the correct handle." },
+        { date: "2026-06-09 10:41:29", user: "Shafiur0", size: "-31", type: "minus", comment: "Switch Google verification to HTML tag method." },
+        { date: "2026-06-09 10:40:05", user: "Shafiur0", size: "+152", type: "plus", comment: "Add Google site verification file." },
+        { date: "2026-06-07 14:01:48", user: "Shafiur0", size: "+12840", type: "plus", comment: "Complete Wikipedia-Cyberpunk Portfolio layout, citations, and external resource coordinates." }
+    ];
+
+    // Populate list
+    list.innerHTML = revisionData.map(rev => `
+        <li class="revision-item">
+            <span class="rev-date">${rev.date}</span>
+            <span class="rev-user">${rev.user}</span>
+            <span class="rev-size ${rev.type}">${rev.size}</span>
+            <span class="rev-comment">(${rev.comment})</span>
+        </li>
+    `).join('');
+
+    historyBtn.addEventListener('click', () => {
+        if (historySection.style.display === 'none') {
+            historySection.style.display = 'block';
+            historySection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+            historySection.style.display = 'none';
+        }
+    });
+
+    closeBtn.addEventListener('click', () => {
+        historySection.style.display = 'none';
+    });
+}
+
+/* ==========================================================================
+   SVG Skills Radar Chart
+   ========================================================================== */
+function initRadarChart() {
+    const svg = document.getElementById('skills-radar-chart');
+    const legend = document.getElementById('chart-legend');
+    if (!svg || !legend) return;
+
+    const skillsData = [
+        { label: "AI/ML Dev", value: 90 },
+        { label: "Web Apps", value: 85 },
+        { label: "Cybersecurity", value: 75 },
+        { label: "Robotics", value: 70 },
+        { label: "QA/Testing", value: 80 }
+    ];
+
+    const width = 400;
+    const height = 400;
+    const cx = width / 2;
+    const cy = height / 2;
+    const r = 135;
+    const totalAxes = skillsData.length;
+
+    // Populate Legend
+    legend.innerHTML = skillsData.map(d => `
+        <div class="legend-item">
+            <span class="legend-color-dot" style="background: ${d.value >= 80 ? 'var(--neon-cyan)' : 'var(--neon-purple)'}"></span>
+            <span>${d.label} (${d.value}%)</span>
+        </div>
+    `).join('');
+
+    // Clear previous dynamic contents
+    svg.innerHTML = '';
+
+    // Draw background grid concentric levels
+    const levels = 5;
+    for (let j = 1; j <= levels; j++) {
+        const levelRadius = (r / levels) * j;
+        const points = [];
+        for (let i = 0; i < totalAxes; i++) {
+            const angle = i * (2 * Math.PI / totalAxes) - Math.PI / 2;
+            const x = cx + Math.cos(angle) * levelRadius;
+            const y = cy + Math.sin(angle) * levelRadius;
+            points.push(`${x},${y}`);
+        }
+        
+        const polygon = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+        polygon.setAttribute('points', points.join(' '));
+        polygon.setAttribute('class', 'radar-grid-web');
+        svg.appendChild(polygon);
+        
+        // Draw helper concentric circle indicators
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute('cx', cx);
+        circle.setAttribute('cy', cy);
+        circle.setAttribute('r', levelRadius);
+        circle.setAttribute('class', 'radar-grid-line');
+        svg.appendChild(circle);
+    }
+
+    // Draw axes and labels
+    const axisCoords = [];
+    skillsData.forEach((skill, i) => {
+        const angle = i * (2 * Math.PI / totalAxes) - Math.PI / 2;
+        const x = cx + Math.cos(angle) * r;
+        const y = cy + Math.sin(angle) * r;
+        axisCoords.push({ x, y, angle });
+
+        // Line from center
+        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        line.setAttribute('x1', cx);
+        line.setAttribute('y1', cy);
+        line.setAttribute('x2', x);
+        line.setAttribute('y2', y);
+        line.setAttribute('class', 'radar-axis-line');
+        svg.appendChild(line);
+
+        // Label
+        const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        const labelRadius = r + 24;
+        const lx = cx + Math.cos(angle) * labelRadius;
+        const ly = cy + Math.sin(angle) * labelRadius;
+        
+        text.setAttribute('x', lx);
+        text.setAttribute('y', ly + 4);
+        text.setAttribute('class', 'radar-axis-label');
+        text.textContent = skill.label;
+        svg.appendChild(text);
+    });
+
+    // Plot data polygon
+    const dataPoints = [];
+    skillsData.forEach((skill, i) => {
+        const angle = i * (2 * Math.PI / totalAxes) - Math.PI / 2;
+        const valueRadius = (r * skill.value) / 100;
+        const x = cx + Math.cos(angle) * valueRadius;
+        const y = cy + Math.sin(angle) * valueRadius;
+        dataPoints.push(`${x},${y}`);
+    });
+
+    const polygon = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+    polygon.setAttribute('points', dataPoints.join(' '));
+    polygon.setAttribute('class', 'radar-polygon');
+    svg.appendChild(polygon);
+
+    // Plot vertex dots with interactivity
+    skillsData.forEach((skill, i) => {
+        const angle = i * (2 * Math.PI / totalAxes) - Math.PI / 2;
+        const valueRadius = (r * skill.value) / 100;
+        const x = cx + Math.cos(angle) * valueRadius;
+        const y = cy + Math.sin(angle) * valueRadius;
+
+        const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        dot.setAttribute('cx', x);
+        dot.setAttribute('cy', y);
+        dot.setAttribute('r', '4');
+        dot.setAttribute('class', 'radar-dot');
+        
+        // Dynamic tooltip logic on hover
+        const title = document.createElementNS('http://www.w3.org/2000/svg', 'title');
+        title.textContent = `${skill.label}: ${skill.value}%`;
+        dot.appendChild(title);
+        
+        svg.appendChild(dot);
+    });
+}
+
+/* ==========================================================================
+   Decryption Cipher Sandbox
+   ========================================================================== */
+function initCipherSandbox() {
+    const input = document.getElementById('cipher-input');
+    const select = document.getElementById('cipher-type');
+    const output = document.getElementById('cipher-output');
+    const status = document.getElementById('cipher-status');
+
+    if (!input || !select || !output || !status) return;
+
+    let cipherInterval = null;
+
+    function processCipher() {
+        const text = input.value;
+        const algorithm = select.value;
+        let finalResult = '';
+
+        if (!text) {
+            output.textContent = 'NO_DATA';
+            return;
+        }
+
+        // Encryption logic
+        if (algorithm === 'rot13') {
+            finalResult = text.replace(/[a-zA-Z]/g, c => {
+                const base = c.toLowerCase() < 'n' ? 13 : -13;
+                return String.fromCharCode(c.charCodeAt(0) + base);
+            });
+        } else if (algorithm === 'base64') {
+            try {
+                // Safeguard against non-Latin1 chars for standard base64 encoding
+                finalResult = btoa(unescape(encodeURIComponent(text)));
+            } catch (e) {
+                finalResult = 'ENCODING_ERROR';
+            }
+        } else if (algorithm === 'binary') {
+            finalResult = text.split('').map(c => c.charCodeAt(0).toString(2).padStart(8, '0')).join(' ');
+        } else if (algorithm === 'hex') {
+            finalResult = text.split('').map(c => c.charCodeAt(0).toString(16).padStart(2, '0').toUpperCase()).join(' ');
+        }
+
+        // Trigger visual decrypt animation
+        status.innerHTML = `<span class="status-pulse-green status-pulse-anim"></span> PROCESSING...`;
+        status.style.color = 'var(--neon-pink)';
+        
+        if (cipherInterval) clearInterval(cipherInterval);
+        
+        let counter = 0;
+        const duration = 12; // iterations
+        const charset = '01ABCDEFGHIKLMNOPQRSTVXYZ@#$%&*+-';
+
+        cipherInterval = setInterval(() => {
+            if (counter >= duration) {
+                clearInterval(cipherInterval);
+                output.textContent = finalResult;
+                status.innerHTML = `<span class="status-pulse-green"></span> SECURE`;
+                status.style.color = '#00ff66';
+            } else {
+                // Shuffle output string characters randomly
+                output.textContent = text.split('').map(() => charset[Math.floor(Math.random() * charset.length)]).join('');
+                counter++;
+            }
+        }, 30);
+    }
+
+    input.addEventListener('input', processCipher);
+    select.addEventListener('change', processCipher);
+
+    // Run once on load
+    processCipher();
+}
+
+/* ==========================================================================
+   Did You Know? Widget
+   ========================================================================== */
+function initDykWidget() {
+    const textEl = document.getElementById('dyk-text');
+    const nextBtn = document.getElementById('dyk-next-btn');
+    if (!textEl || !nextBtn) return;
+
+    const facts = [
+        "...that Shafim's autonomous firefighter robot Fenix uses computer vision pathfinding and thermal imaging?",
+        "...that the SQAT Club at DIU organizes coding hackathons and automated test bootcamps?",
+        "...that Shafim's team Cortex Crew won 1st Runner-Up at the ICADHI IEEE International Congress?",
+        "...that Shafim holds an Object-Oriented Programming in Java certification from Simplilearn?",
+        "...that this portfolio's black/neon layout is styled to blend Wikipedia guidelines with Gibsonian cyberpunk hacker elements?"
+    ];
+
+    let currentFactIndex = 0;
+    let dykTimer = null;
+
+    function showNextFact() {
+        textEl.style.opacity = '0';
+        setTimeout(() => {
+            currentFactIndex = (currentFactIndex + 1) % facts.length;
+            textEl.textContent = facts[currentFactIndex];
+            textEl.style.opacity = '1';
+        }, 300);
+    }
+
+    nextBtn.addEventListener('click', () => {
+        showNextFact();
+        resetTimer();
+    });
+
+    function resetTimer() {
+        if (dykTimer) clearInterval(dykTimer);
+        dykTimer = setInterval(showNextFact, 12000); // cycle every 12s
+    }
+
+    resetTimer();
+}
+
+/* ==========================================================================
+   Citation System & Modal
+   ========================================================================== */
+function initCitationModal() {
+    const citeBtn = document.getElementById('cite-article-btn');
+    const modal = document.getElementById('cite-modal');
+    const closeBtn = document.getElementById('close-cite-modal');
+    const tabBtns = document.querySelectorAll('.modal-tab-btn');
+    const outputText = document.getElementById('citation-text');
+    const copyBtn = document.getElementById('copy-citation-btn');
+
+    if (!citeBtn || !modal || !closeBtn || !outputText || !copyBtn) return;
+
+    const url = "https://shafiur-rahaman-shafim.vercel.app";
+
+    const citations = {
+        ieee: `S. R. Shafim, "Shafiur Rahman Shafim | Software Engineer & AI Enthusiast Portfolio," Vercel Projects, 2026. [Online]. Available: ${url}.`,
+        bibtex: `@misc{shafim2026portfolio,\n  author = {Shafim, Shafiur Rahman},\n  title = {Shafiur Rahman Shafim | Software Engineer \\& AI Enthusiast Portfolio},\n  year = {2026},\n  howpublished = {\\url{${url}}}\n}`,
+        apa: `Shafim, S. R. (2026). Shafiur Rahman Shafim | Software Engineer & AI Enthusiast Portfolio. Retrieved from ${url}`,
+        mla: `Shafim, Shafiur Rahman. "Shafiur Rahman Shafim | Software Engineer & AI Enthusiast Portfolio." Vercel Projects, 2026, ${url}.`
+    };
+
+    function updateCitation(style) {
+        outputText.textContent = citations[style];
+    }
+
+    citeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        updateCitation('ieee'); // default load style
+        // reset active tabs
+        tabBtns.forEach(btn => btn.classList.remove('active'));
+        document.querySelector('.modal-tab-btn[data-style="ieee"]').classList.add('active');
+        modal.style.display = 'flex';
+    });
+
+    closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    // Close when clicking overlay
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.style.display = 'none';
+    });
+
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            tabBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            updateCitation(btn.getAttribute('data-style'));
+        });
+    });
+
+    copyBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(outputText.textContent).then(() => {
+            const originalText = copyBtn.innerHTML;
+            copyBtn.innerHTML = `<i class="fa-solid fa-check"></i> COPIED_SUCCESSFULLY`;
+            copyBtn.style.background = '#00ff66';
+            copyBtn.style.color = '#050508';
+            copyBtn.style.borderColor = '#00ff66';
+            
+            setTimeout(() => {
+                copyBtn.innerHTML = originalText;
+                copyBtn.style.background = '';
+                copyBtn.style.color = '';
+                copyBtn.style.borderColor = '';
+            }, 2000);
+        });
+    });
+}
+
+/* ==========================================================================
+   Collapsible & Draggable Cyberpunk CLI Terminal
+   ========================================================================== */
+function initCliTerminal() {
+    const term = document.getElementById('terminal-widget');
+    const toggleBtn = document.getElementById('terminal-toggle-btn');
+    const input = document.getElementById('terminal-input');
+    const history = document.getElementById('terminal-history');
+    const termBody = document.getElementById('terminal-body');
+    
+    // Window actions buttons
+    const minBtn = document.getElementById('term-min-btn');
+    const maxBtn = document.getElementById('term-max-btn');
+    const closeBtn = document.getElementById('term-close-btn');
+
+    if (!term || !toggleBtn || !input || !history || !termBody) return;
+
+    // Draggable code
+    const header = document.getElementById('terminal-drag');
+    let isDragging = false;
+    let startX, startY, initialLeft, initialTop;
+
+    header.addEventListener('mousedown', (e) => {
+        if (e.target.closest('.terminal-header-right')) return;
+        isDragging = true;
+        startX = e.clientX;
+        startY = e.clientY;
+        const rect = term.getBoundingClientRect();
+        initialLeft = rect.left;
+        initialTop = rect.top;
+        
+        term.style.right = 'auto';
+        term.style.bottom = 'auto';
+        term.style.left = initialLeft + 'px';
+        term.style.top = initialTop + 'px';
+        e.preventDefault();
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        term.style.left = (initialLeft + dx) + 'px';
+        term.style.top = (initialTop + dy) + 'px';
+    });
+
+    document.addEventListener('mouseup', () => {
+        isDragging = false;
+    });
+
+    // Window action states
+    toggleBtn.addEventListener('click', () => {
+        term.classList.remove('minimized');
+        input.focus();
+    });
+
+    minBtn.addEventListener('click', () => {
+        term.classList.add('minimized');
+    });
+
+    maxBtn.addEventListener('click', () => {
+        term.classList.toggle('maximized');
+    });
+
+    closeBtn.addEventListener('click', () => {
+        term.classList.add('minimized');
+    });
+
+    // Focus input on body click
+    termBody.addEventListener('click', () => {
+        input.focus();
+    });
+
+    // Command handling
+    let hackInterval = null;
+    let isHacking = false;
+
+    function stopHack() {
+        if (hackInterval) {
+            clearInterval(hackInterval);
+            hackInterval = null;
+        }
+        isHacking = false;
+        history.innerHTML = '';
+        input.value = '';
+        input.disabled = false;
+        writeOutput("Matrix sequence halted. Secure prompt restored.");
+        writeOutput("Type 'help' to review commands.");
+        input.focus();
+    }
+
+    input.addEventListener('keydown', (e) => {
+        if (isHacking) {
+            stopHack();
+            e.preventDefault();
+            return;
+        }
+
+        if (e.key === 'Enter') {
+            const cmd = input.value.trim().toLowerCase();
+            input.value = '';
+
+            if (!cmd) return;
+
+            // log input
+            writeLogInput(cmd);
+
+            // route commands
+            switch (cmd) {
+                case 'help':
+                    writeOutput(
+                        "Available system commands:\n" +
+                        "  help      - Display this list of options.\n" +
+                        "  bio       - Render quick summary biography.\n" +
+                        "  skills    - List programming stack and frameworks.\n" +
+                        "  projects  - Show active codebase coordinates.\n" +
+                        "  hack      - Execute matrix threat simulation display.\n" +
+                        "  clear     - Wipe shell scroll logging history.\n" +
+                        "  minimize  - Drop shell terminal link to background."
+                    );
+                    break;
+                case 'bio':
+                    writeOutput(
+                        "Subject: Shafiur Rahman Shafim\n" +
+                        "Affiliation: Software Engineering Dept, DIU\n" +
+                        "Position: Deputy Secretary, SQAT Club\n" +
+                        "Focus: Full stack AI automation, cybersecurity analysis."
+                    );
+                    break;
+                case 'skills':
+                    writeOutput(
+                        "Systems Stacks:\n" +
+                        "  - Core Languages: JavaScript, Python, TypeScript, Java\n" +
+                        "  - Front-end: HTML, CSS, Next.js, Tailwind CSS\n" +
+                        "  - Back-end: Node.js, Express.js, Prisma ORM\n" +
+                        "  - DB: PostgreSQL, MySQL\n" +
+                        "  - Operations: Git, Software Testing, Prompt Engineering"
+                    );
+                    break;
+                case 'projects':
+                    writeOutput(
+                        "Code repositories identified:\n" +
+                        "  - AIDoc      : Sympton Analyzer [https://github.com/Shafiur0/AiDoc.s]\n" +
+                        "  - Portfolio  : Wiki-Cyberpunk [https://shafiur-rahman-web-portfolio.vercel.app]\n" +
+                        "  - WhisperWall: Confession board [https://whisper-wall-zeta.vercel.app]\n" +
+                        "  - FitCheck   : Health track system [https://fitcheck-sand.vercel.app]"
+                    );
+                    break;
+                case 'clear':
+                    history.innerHTML = '';
+                    break;
+                case 'minimize':
+                    term.classList.add('minimized');
+                    break;
+                case 'hack':
+                    runHackScreensaver();
+                    break;
+                default:
+                    writeError(`SHELL_ERROR: Command '${cmd}' not recognized.`);
+            }
+
+            termBody.scrollTop = termBody.scrollHeight;
+        }
+    });
+
+    // Global keypress listener during matrix hack to stop screensaver
+    document.addEventListener('keydown', () => {
+        if (isHacking) stopHack();
+    });
+
+    function writeLogInput(cmd) {
+        const row = document.createElement('div');
+        row.className = 'terminal-log-row';
+        row.innerHTML = `<span class="terminal-log-input">guest@shafim_wiki:~$. ${cmd}</span>`;
+        history.appendChild(row);
+    }
+
+    function writeOutput(text) {
+        const row = document.createElement('div');
+        row.className = 'terminal-log-row terminal-log-output';
+        row.textContent = text;
+        history.appendChild(row);
+    }
+
+    function writeError(text) {
+        const row = document.createElement('div');
+        row.className = 'terminal-log-row terminal-log-error';
+        row.textContent = text;
+        history.appendChild(row);
+    }
+
+    function runHackScreensaver() {
+        isHacking = true;
+        input.disabled = true;
+        history.innerHTML = '';
+        const banner = document.createElement('div');
+        banner.style.color = '#00ff66';
+        banner.style.fontFamily = 'monospace';
+        history.appendChild(banner);
+
+        const columns = 24;
+        hackInterval = setInterval(() => {
+            let rowText = '';
+            for (let i = 0; i < columns; i++) {
+                if (Math.random() > 0.3) {
+                    rowText += Math.random() > 0.5 ? '1 ' : '0 ';
+                } else {
+                    rowText += '  ';
+                }
+            }
+            const line = document.createElement('div');
+            line.style.whiteSpace = 'pre';
+            line.textContent = rowText;
+            history.appendChild(line);
+            
+            // Limit output lines to prevent memory crash
+            if (history.children.length > 30) {
+                history.removeChild(history.firstChild);
+            }
+            termBody.scrollTop = termBody.scrollHeight;
+        }, 60);
+    }
 }

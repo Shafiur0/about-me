@@ -33,7 +33,11 @@ I have refined the hybrid Wikipedia-Cyberpunk landing page for **Shafiur Rahman 
 ### 7. Google Site Verification
 - Added the Google site verification meta tag `<meta name="google-site-verification" content="HfGjhHQo8b99qjy9jC3gZS1ObVFfgmWdEdEYsEk9HL4" />` to the `<head>` of [index.html](file:///d:/about%20me/index.html).
 - Removed the deprecated HTML verification file (`google864630410e5d0d5f.html`).
-- Committed and successfully pushed the changes to the remote repository so the site updates and verification can be finalized.
+
+### 8. IEEE ICADHI Congress Achievement & Citation Link Fix
+- Added the **1st Runner-Up at ICADHI IEEE Congress (Project Showcase)** entry to the **Achievements & Timeline** section (June 16, 2026).
+- Integrated **Reference #3** pointing to the official Facebook announcement for the ICADHI IEEE Congress showcase award.
+- Corrected the superscript citation `[1]` for the Daffodil International University link in the lead paragraph by wrapping it in a citation link pointing directly to the References section at the bottom of the page, ensuring full layout consistency.
 
 ---
 
@@ -42,7 +46,7 @@ I have refined the hybrid Wikipedia-Cyberpunk landing page for **Shafiur Rahman 
 We verified all core segments and interactive states using automated browser rendering.
 
 ### 1. Lead Paragraph & SQAT DIU Link
-The lead paragraph correctly links the Department of Software Engineering (DIU) and the SQAT Club to their official pages.
+The lead paragraph correctly links the Department of Software Engineering (DIU) and the SQAT Club to their official pages. Superscript citations `[1]`, `[2]`, and `[3]` are all correctly linked to their respective footnote references in the wiki-style reference registry at the bottom.
 
 ### 2. Avatar & Profile Infobox
 The infobox successfully renders the custom avatar image (`shafim_avatar.jpg`), and the X branding icon is visible.
@@ -51,7 +55,7 @@ The infobox successfully renders the custom avatar image (`shafim_avatar.jpg`), 
 Filtering tags isolate projects by domain (AI, Web, Robotics, Utilities) with smooth opacity transitions. Titles display arrow indicators next to them and change to neon cyan on hover.
 
 ### 4. Footer Developer Credit & References
-The developer credit box has been simplified to a clean, borderless single-line layout featuring a gold crown icon and code tags (`</>`) without any surrounding box or dashed border. References #1 and #2 correctly link to Daffodil International University and the Facebook appointment post.
+The developer credit box has been simplified to a clean, borderless single-line layout featuring a gold crown icon and code tags (`</>`) without any surrounding box or dashed border. References #1, #2, and #3 correctly link to Daffodil International University, the Facebook appointment post, and the IEEE Congress showcase announcement.
 
 ![Footer & References Verification](./developer_credit_final_verify_1780843238236.png)
 

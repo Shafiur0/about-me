@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCliTerminal();
     initProjectVideoPreviews();
     initAchievementsCarousel();
+    initBioGallery();
 });
 
 /* ==========================================================================
@@ -1105,3 +1106,66 @@ function initAchievementsCarousel() {
         });
     }
 }
+
+/* ==========================================================================
+   Biography Section Image Gallery Feed
+   ========================================================================== */
+function initBioGallery() {
+    const track = document.getElementById('bio-gallery-slides');
+    const slides = track ? track.querySelectorAll('.gallery-slide') : [];
+    const indicatorContainer = document.getElementById('bio-gallery-indicators');
+
+    if (!track || slides.length <= 1) return;
+
+    let currentSlide = 0;
+    const slideCount = slides.length;
+    let autoPlayTimer = null;
+    const autoPlayInterval = 3000;
+
+    function updateGallery() {
+        track.style.transform = `translateX(-${currentSlide * 100}%)`;
+        
+        slides.forEach((slide, idx) => {
+            if (idx === currentSlide) {
+                slide.classList.add('active');
+            } else {
+                slide.classList.remove('active');
+            }
+        });
+
+        if (indicatorContainer) {
+            const dots = indicatorContainer.querySelectorAll('.gallery-indicator-dot');
+            dots.forEach((dot, idx) => {
+                if (idx === currentSlide) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slideCount;
+        updateGallery();
+    }
+
+    function resetAutoplay() {
+        if (autoPlayTimer) clearInterval(autoPlayTimer);
+        autoPlayTimer = setInterval(nextSlide, autoPlayInterval);
+    }
+
+    if (indicatorContainer) {
+        const dots = indicatorContainer.querySelectorAll('.gallery-indicator-dot');
+        dots.forEach((dot, idx) => {
+            dot.addEventListener('click', () => {
+                currentSlide = idx;
+                updateGallery();
+                resetAutoplay();
+            });
+        });
+    }
+
+    resetAutoplay();
+}
+

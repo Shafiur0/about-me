@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // New Feature Initializers
     initRadarChart();
-    initCipherSandbox();
     initDykWidget();
     initCitationModal();
     initCliTerminal();
@@ -517,78 +516,7 @@ function initRadarChart() {
     });
 }
 
-/* ==========================================================================
-   Decryption Cipher Sandbox
-   ========================================================================== */
-function initCipherSandbox() {
-    const input = document.getElementById('cipher-input');
-    const select = document.getElementById('cipher-type');
-    const output = document.getElementById('cipher-output');
-    const status = document.getElementById('cipher-status');
 
-    if (!input || !select || !output || !status) return;
-
-    let cipherInterval = null;
-
-    function processCipher() {
-        const text = input.value;
-        const algorithm = select.value;
-        let finalResult = '';
-
-        if (!text) {
-            output.textContent = 'NO_DATA';
-            return;
-        }
-
-        // Encryption logic
-        if (algorithm === 'rot13') {
-            finalResult = text.replace(/[a-zA-Z]/g, c => {
-                const base = c.toLowerCase() < 'n' ? 13 : -13;
-                return String.fromCharCode(c.charCodeAt(0) + base);
-            });
-        } else if (algorithm === 'base64') {
-            try {
-                // Safeguard against non-Latin1 chars for standard base64 encoding
-                finalResult = btoa(unescape(encodeURIComponent(text)));
-            } catch (e) {
-                finalResult = 'ENCODING_ERROR';
-            }
-        } else if (algorithm === 'binary') {
-            finalResult = text.split('').map(c => c.charCodeAt(0).toString(2).padStart(8, '0')).join(' ');
-        } else if (algorithm === 'hex') {
-            finalResult = text.split('').map(c => c.charCodeAt(0).toString(16).padStart(2, '0').toUpperCase()).join(' ');
-        }
-
-        // Trigger visual decrypt animation
-        status.innerHTML = `<span class="status-pulse-green status-pulse-anim"></span> PROCESSING...`;
-        status.style.color = 'var(--neon-pink)';
-        
-        if (cipherInterval) clearInterval(cipherInterval);
-        
-        let counter = 0;
-        const duration = 12; // iterations
-        const charset = '01ABCDEFGHIKLMNOPQRSTVXYZ@#$%&*+-';
-
-        cipherInterval = setInterval(() => {
-            if (counter >= duration) {
-                clearInterval(cipherInterval);
-                output.textContent = finalResult;
-                status.innerHTML = `<span class="status-pulse-green"></span> SECURE`;
-                status.style.color = '#00ff66';
-            } else {
-                // Shuffle output string characters randomly
-                output.textContent = text.split('').map(() => charset[Math.floor(Math.random() * charset.length)]).join('');
-                counter++;
-            }
-        }, 30);
-    }
-
-    input.addEventListener('input', processCipher);
-    select.addEventListener('change', processCipher);
-
-    // Run once on load
-    processCipher();
-}
 
 /* ==========================================================================
    Did You Know? Widget

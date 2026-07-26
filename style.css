@@ -1109,8 +1109,54 @@ a:hover {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 180px;
+    min-height: 400px;
     transition: var(--transition-normal);
+}
+
+.cert-details {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* Certificate Preview Image Styles */
+.cert-preview-wrapper {
+    position: relative;
+    margin: -1.5rem -1.5rem 1.25rem -1.5rem;
+    height: 170px;
+    overflow: hidden;
+    border-radius: 5px 5px 0 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+}
+
+.cert-preview-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-normal), filter var(--transition-normal);
+}
+
+.cert-card:hover .cert-preview-image {
+    transform: scale(1.04);
+    filter: brightness(0.65);
+}
+
+/* Eye overlay zoom button for certs */
+.cert-preview-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+    z-index: 5;
+    pointer-events: none;
+    transition: opacity var(--transition-fast) ease, transform var(--transition-fast) ease;
+}
+
+.cert-card:hover .cert-preview-overlay {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
 }
 
 .cert-glow-border {

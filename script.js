@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initProjectVideoPreviews();
     initAchievementsCarousel();
     initBioGallery();
+    initCertificatesLightbox();
 });
 
 /* ==========================================================================
@@ -1167,5 +1168,36 @@ function initBioGallery() {
     }
 
     resetAutoplay();
+}
+
+/* ==========================================================================
+   Certifications Image Lightbox Zoom
+   ========================================================================== */
+function initCertificatesLightbox() {
+    const certCards = document.querySelectorAll('.cert-card');
+    const lightbox = document.getElementById('lightbox-modal');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+
+    if (!lightbox || !lightboxImg) return;
+
+    certCards.forEach(card => {
+        const trigger = card.querySelector('.cert-preview-wrapper');
+        if (!trigger) return;
+
+        trigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const img = card.querySelector('.cert-preview-image');
+            if (!img) return;
+
+            lightboxImg.src = img.src;
+            lightboxCaption.textContent = img.alt;
+            lightbox.style.display = 'flex';
+            
+            setTimeout(() => {
+                lightbox.classList.add('open');
+            }, 10);
+        });
+    });
 }
 

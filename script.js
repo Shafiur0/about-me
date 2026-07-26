@@ -1345,6 +1345,12 @@ function initVideoSection() {
                 finalEmbedUrl = urlObj.toString();
             }
 
+            // Add playing class to parent video-card to disable hover transitions
+            const parentCard = wrapper.closest('.video-card');
+            if (parentCard) {
+                parentCard.classList.add('playing');
+            }
+
             // Create iframe or element
             const iframe = document.createElement('iframe');
             iframe.src = finalEmbedUrl;

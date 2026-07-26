@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initDykWidget();
     initCitationModal();
     initCliTerminal();
+    initProjectVideoPreviews();
 });
 
 /* ==========================================================================
@@ -952,4 +953,61 @@ function initCliTerminal() {
             termBody.scrollTop = termBody.scrollHeight;
         }, 60);
     }
+}
+
+/* ==========================================================================
+   Interactive Hover Video Previews
+   ========================================================================== */
+function initProjectVideoPreviews() {
+    const cards = document.querySelectorAll('.project-card');
+    
+    function getYouTubeId(url) {
+        if (!url) return null;
+        if (url.length === 11 && /^[a-zA-Z0-9_-]{11}$/.test(url)) {
+            return url;
+        }
+        const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|shorts\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+        const match = url.match(regExp);
+        return (match && match[2].length === 11) ? match[2] : null;
+    }
+
+    cards.forEach(card => {
+        const youtubeUrl = card.getAttribute('data-youtube-url');
+        const youtubeId = getYouTubeId(youtubeUrl);
+        
+        if (!youtubeId) return;
+
+        const previewWrapper = card.querySelector('.project-preview-wrapper');
+        const videoContainer = card.querySelector('.project-video-container');
+        if (!previewWrapper || !videoContainer) return;
+
+        let delayTimer = null;
+
+        previewWrapper.addEventListener('mouseenter', () => {
+            delayTimer = setTimeout(() => {
+                if (videoContainer.children.length === 0) {
+                    const iframe = document.createElement('iframe');
+                    iframe.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${youtubeId}&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1`;
+                    iframe.allow = 'autoplay; encrypted-media';
+                    iframe.title = 'Project Preview Video';
+                    videoContainer.innerHTML = '';
+                    videoContainer.appendChild(iframe);
+                }
+                videoContainer.classList.add('active');
+            }, 250);
+        });
+
+        previewWrapper.addEventListener('mouseleave', () => {
+            if (delayTimer) {
+                clearTimeout(delayTimer);
+                delayTimer = null;
+            }
+            videoContainer.classList.remove('active');
+            setTimeout(() => {
+                if (!videoContainer.classList.contains('active')) {
+                    videoContainer.innerHTML = '';
+                }
+            }, 300);
+        });
+    });
 }

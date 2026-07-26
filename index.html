@@ -630,6 +630,37 @@
                     A chronological breakdown of leadership appointments, competitive championships, and academic milestones achieved by Shafim.
                 </p>
 
+                <!-- Achievements Image Carousel -->
+                <div class="achievements-carousel-container">
+                    <div class="carousel-track-wrapper">
+                        <div class="carousel-track" id="carousel-track">
+                            <!-- Slide 1 -->
+                            <div class="carousel-slide active" data-index="0" data-src="achievement1.png">
+                                <img src="achievement1.png" alt="SQAT Club Deputy Secretary" class="carousel-img">
+                            </div>
+                            <!-- Slide 2 -->
+                            <div class="carousel-slide" data-index="1" data-src="achievement2.jpg">
+                                <img src="achievement2.jpg" alt="Champion Cyber Security Awareness Day" class="carousel-img">
+                            </div>
+                            <!-- Slide 3 -->
+                            <div class="carousel-slide" data-index="2" data-src="achievement3.jpg">
+                                <img src="achievement3.jpg" alt="1st Runner-Up ICADHI 2026 Showcase" class="carousel-img">
+                            </div>
+                        </div>
+                        
+                        <!-- Navigation Buttons -->
+                        <button type="button" class="carousel-control prev-btn" id="carousel-prev-btn" aria-label="Previous Slide"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button type="button" class="carousel-control next-btn" id="carousel-next-btn" aria-label="Next Slide"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                    
+                    <!-- Indicator Dots -->
+                    <div class="carousel-indicators" id="carousel-indicators">
+                        <span class="indicator-dot active" data-slide="0"></span>
+                        <span class="indicator-dot" data-slide="1"></span>
+                        <span class="indicator-dot" data-slide="2"></span>
+                    </div>
+                </div>
+
                 <!-- Vertical Timeline -->
                 <div class="timeline-container">
                     
@@ -980,6 +1011,13 @@
         <i class="fa-solid fa-terminal"></i>
         <span>&gt;_ UPLINK_SHELL</span>
     </button>
+
+    <!-- Lightbox Modal for Image Zoom -->
+    <div id="lightbox-modal" class="lightbox-modal" style="display: none;">
+        <span class="lightbox-close" id="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img" src="" alt="Zoomed Achievement">
+        <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
 
     <!-- Custom Script -->
     <script src="script.js"></script>

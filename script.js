@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCitationModal();
     initCliTerminal();
     initProjectVideoPreviews();
+    initAchievementsCarousel();
 });
 
 /* ==========================================================================
@@ -1010,4 +1011,169 @@ function initProjectVideoPreviews() {
             }, 300);
         });
     });
+}
+
+/* ==========================================================================
+   Achievements Carousel & Fullscreen Lightbox
+   ========================================================================== */
+function initAchievementsCarousel() {
+    const track = document.getElementById('carousel-track');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const prevBtn = document.getElementById('carousel-prev-btn');
+    const nextBtn = document.getElementById('carousel-next-btn');
+    const indicatorContainer = document.getElementById('carousel-indicators');
+    
+    // Lightbox modal elements
+    const lightbox = document.getElementById('lightbox-modal');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxClose = document.getElementById('lightbox-close');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+
+    if (!track || slides.length === 0) return;
+
+    let currentSlide = 0;
+    const slideCount = slides.length;
+    let autoPlayTimer = null;
+    const autoPlayInterval = 3000;
+
+    function updateCarousel() {
+        track.style.transform = `translateX(-${currentSlide * 100}%)`;
+        
+        slides.forEach((slide, idx) => {
+            if (idx === currentSlide) {
+                slide.classList.add('active');
+            } else {
+                slide.classList.remove('active');
+            }
+        });
+
+        const dots = indicatorContainer.querySelectorAll('.indicator-dot');
+        dots.forEach((dot, idx) => {
+            if (idx === currentSlide) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slideCount;
+        updateCarousel();
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+        updateCarousel();
+    }
+
+    function resetAutoplay() {
+        if (autoPlayTimer) clearInterval(autoPlayTimer);
+        autoPlayTimer = setInterval(nextSlide, autoPlayInterval);
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            nextSlide();
+            resetAutoplay();
+        });
+    }
+
+    if (prevBtn) {
+        prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            prevSlide();
+            resetAutoplay();
+        });
+    }
+
+    if (indicatorContainer) {
+        const dots = indicatorContainer.querySelectorAll('.indicator-dot');
+        dots.forEach((dot, idx) => {
+            dot.addEventListener('click', (e) => {
+                e.stopPropagation();
+                currentSlide = idx;
+                updateCarousel();
+                resetAutoplay();
+            });
+        });
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (lightbox && lightbox.style.display === 'flex') return;
+        if (e.key === 'ArrowRight') {
+            nextSlide();
+            resetAutoplay();
+        } else if (e.key === 'ArrowLeft') {
+            prevSlide();
+            resetAutoplay();
+        }
+    });
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    track.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    track.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+        const threshold = 50;
+        if (touchStartX - touchEndX > threshold) {
+            nextSlide();
+            resetAutoplay();
+        } else if (touchEndX - touchStartX > threshold) {
+            prevSlide();
+            resetAutoplay();
+        }
+    }
+
+    resetAutoplay();
+
+    if (lightbox && lightboxImg && lightboxClose) {
+        slides.forEach(slide => {
+            slide.addEventListener('click', () => {
+                const img = slide.querySelector('.carousel-img');
+                if (!img) return;
+
+                if (autoPlayTimer) clearInterval(autoPlayTimer);
+
+                lightboxImg.src = img.src;
+                lightboxCaption.textContent = img.alt;
+                lightbox.style.display = 'flex';
+                
+                setTimeout(() => {
+                    lightbox.classList.add('open');
+                }, 10);
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('open');
+            setTimeout(() => {
+                lightbox.style.display = 'none';
+                resetAutoplay();
+            }, 300);
+        }
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.style.display === 'flex') {
+                closeLightbox();
+            }
+        });
+    }
 }

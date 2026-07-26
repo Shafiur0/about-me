@@ -1288,6 +1288,7 @@ function initCertificatesLightbox() {
             
             setTimeout(() => {
                 lightbox.classList.add('open');
+            }, 10);
         });
     });
 }

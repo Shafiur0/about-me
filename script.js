@@ -1288,22 +1288,6 @@ function initCertificatesLightbox() {
             
             setTimeout(() => {
                 lightbox.classList.add('open');
-            }, 10);
-        });
-    });
-
-    // Add support for Timeline Preview Images
-    const timelinePreviews = document.querySelectorAll('.timeline-img-preview');
-    timelinePreviews.forEach(img => {
-        img.addEventListener('click', (e) => {
-            e.stopPropagation();
-            lightboxImg.src = img.src;
-            lightboxCaption.textContent = img.alt;
-            lightbox.style.display = 'flex';
-            
-            setTimeout(() => {
-                lightbox.classList.add('open');
-            }, 10);
         });
     });
 }

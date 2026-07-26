@@ -1139,6 +1139,42 @@ a:hover {
     color: var(--color-text-secondary);
 }
 
+/* Timeline Preview Images */
+.timeline-image-wrapper {
+    margin-top: 1rem;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    max-width: 100%;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.timeline-img-preview {
+    width: 100%;
+    height: auto;
+    max-height: 220px;
+    object-fit: cover;
+    display: block;
+    transition: transform var(--transition-normal), filter var(--transition-normal);
+}
+
+.timeline-img-preview:hover {
+    transform: scale(1.03);
+    filter: brightness(0.85);
+}
+
+.timeline-images-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.timeline-images-grid .timeline-image-wrapper {
+    margin-top: 0;
+}
+
 /* ==========================================================================
    Certificates Section
    ========================================================================== */

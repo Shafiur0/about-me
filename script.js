@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initAchievementsCarousel();
     initBioGallery();
     initCertificatesLightbox();
+    initProjectVideoButtons();
 });
 
 /* ==========================================================================
@@ -1198,6 +1199,34 @@ function initCertificatesLightbox() {
                 lightbox.classList.add('open');
             }, 10);
         });
+    });
+}
+
+/* ==========================================================================
+   Project Video Watch Button Generation
+   ========================================================================== */
+function initProjectVideoButtons() {
+    const cards = document.querySelectorAll('.project-card');
+    cards.forEach(card => {
+        const youtubeUrl = card.getAttribute('data-youtube-url');
+        if (!youtubeUrl) return;
+
+        const desc = card.querySelector('.project-desc');
+        if (!desc) return;
+
+        const btnContainer = document.createElement('div');
+        btnContainer.className = 'project-video-btn-container';
+        
+        const btn = document.createElement('a');
+        btn.href = youtubeUrl;
+        btn.target = '_blank';
+        btn.rel = 'noopener noreferrer';
+        btn.className = 'btn-video';
+        btn.innerHTML = `<i class="fa-solid fa-circle-play"></i> Watch Video`;
+        
+        btnContainer.appendChild(btn);
+        
+        desc.parentNode.insertBefore(btnContainer, desc.nextSibling);
     });
 }
 

@@ -919,6 +919,35 @@ a:hover {
     transform: scale(0.8);
 }
 
+/* Project Video Links */
+.project-video-btn-container {
+    margin: 0.75rem 0;
+}
+
+.btn-video {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    color: var(--neon-cyan);
+    background: rgba(0, 240, 255, 0.05);
+    border: 1px solid rgba(0, 240, 255, 0.25);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    text-decoration: none;
+}
+
+.btn-video:hover {
+    color: #050508;
+    background: var(--neon-cyan);
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+    transform: translateY(-1px);
+}
+
 .project-tags {
     display: flex;
     flex-wrap: wrap;

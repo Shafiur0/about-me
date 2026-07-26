@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initBioGallery();
     initCertificatesLightbox();
     initProjectVideoButtons();
+    initVideoSection();
 });
 
 /* ==========================================================================
@@ -1319,4 +1320,43 @@ function initProjectVideoButtons() {
         desc.parentNode.insertBefore(btnContainer, desc.nextSibling);
     });
 }
+
+/* ==========================================================================
+   Media Broadcasts Video Section Player
+   ========================================================================== */
+function initVideoSection() {
+    const wrappers = document.querySelectorAll('#videos .video-player-wrapper');
+    
+    wrappers.forEach(wrapper => {
+        const placeholder = wrapper.querySelector('.video-thumbnail-placeholder');
+        if (!placeholder) return;
+
+        placeholder.addEventListener('click', () => {
+            const rawUrl = wrapper.getAttribute('data-video-url');
+            if (!rawUrl) return;
+
+            let finalEmbedUrl = rawUrl;
+            
+            // Format YouTube URL params to play with sound and autoplay
+            if (rawUrl.includes('youtube.com') || rawUrl.includes('youtu.be')) {
+                const urlObj = new URL(rawUrl);
+                urlObj.searchParams.set('autoplay', '1');
+                urlObj.searchParams.set('mute', '0'); // ensure audio is on
+                finalEmbedUrl = urlObj.toString();
+            }
+
+            // Create iframe or element
+            const iframe = document.createElement('iframe');
+            iframe.src = finalEmbedUrl;
+            iframe.title = "Video Player";
+            iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+            iframe.allowFullscreen = true;
+            
+            // Clear placeholder and append player
+            wrapper.innerHTML = '';
+            wrapper.appendChild(iframe);
+        });
+    });
+}
+
 

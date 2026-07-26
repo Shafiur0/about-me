@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCertificatesLightbox();
     initProjectVideoButtons();
     initVideoSection();
+    initMemoriesGallery();
 });
 
 /* ==========================================================================
@@ -1361,6 +1362,59 @@ function initVideoSection() {
             // Clear placeholder and append player
             wrapper.innerHTML = '';
             wrapper.appendChild(iframe);
+        });
+     });
+}
+
+/* ==========================================================================
+   Memories Gallery Filtering & Lightbox
+   ========================================================================== */
+function initMemoriesGallery() {
+    const filterBtns = document.querySelectorAll('.gallery-filters .filter-btn');
+    const cards = document.querySelectorAll('.memories-grid .memory-card');
+    const lightbox = document.getElementById('lightbox-modal');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+
+    if (filterBtns.length === 0 || cards.length === 0) return;
+
+    // Category Filtering
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Reset active state
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const filterValue = btn.getAttribute('data-filter');
+
+            cards.forEach(card => {
+                const categories = card.getAttribute('data-category').split(' ');
+                if (filterValue === 'all' || categories.includes(filterValue)) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        });
+    });
+
+    // Lightbox modal binding for Memories
+    cards.forEach(card => {
+        const wrapper = card.querySelector('.memory-image-wrapper');
+        const img = card.querySelector('.memory-img');
+        if (!wrapper || !img) return;
+
+        wrapper.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (!lightbox || !lightboxImg) return;
+
+            lightboxImg.src = img.src;
+            lightboxCaption.textContent = img.alt;
+            lightbox.style.display = 'flex';
+            
+            setTimeout(() => {
+                lightbox.classList.add('open');
+            }, 10);
         });
     });
 }

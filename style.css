@@ -2968,3 +2968,130 @@ a:hover {
     }
 }
 
+/* ==========================================================================
+   Memories Gallery Section
+   ========================================================================== */
+.gallery-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.gallery-filters .filter-btn {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.gallery-filters .filter-btn:hover {
+    color: var(--neon-cyan);
+    border-color: var(--neon-cyan);
+    background: rgba(0, 240, 255, 0.03);
+}
+
+.gallery-filters .filter-btn.active {
+    color: #050508;
+    background: var(--neon-cyan);
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+}
+
+.memories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1rem;
+}
+
+.memory-card {
+    background: var(--color-card-bg);
+    border: var(--glass-border);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
+    opacity: 1;
+    display: block;
+}
+
+.memory-card.hidden {
+    display: none;
+}
+
+.memory-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(0, 240, 255, 0.25);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), var(--shadow-cyan);
+}
+
+.memory-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    cursor: zoom-in;
+}
+
+.memory-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-normal);
+}
+
+.memory-card:hover .memory-img {
+    transform: scale(1.05);
+}
+
+.memory-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(5, 5, 8, 0.1), rgba(5, 5, 8, 0.7));
+    opacity: 0.8;
+    display: flex;
+    align-items: flex-end;
+    padding: 0.75rem;
+    transition: opacity var(--transition-normal);
+}
+
+.memory-card:hover .memory-overlay {
+    opacity: 1;
+}
+
+.memory-tag {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--neon-cyan);
+    background: rgba(0, 240, 255, 0.08);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    border-radius: 3px;
+    padding: 0.2rem 0.5rem;
+}
+
+.memory-caption {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    padding: 0.75rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: color var(--transition-normal);
+}
+
+.memory-card:hover .memory-caption {
+    color: #fff;
+}
+

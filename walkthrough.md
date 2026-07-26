@@ -34,6 +34,14 @@ I have successfully designed, built, and verified five premium interactive featu
   - Enabled full **Touch Drag support** on the Cyberpunk CLI Terminal so mobile and tablet touch-screen users can drag the terminal interface anywhere.
 - **Files Modified:** [style.css](file:///d:/about%20me/style.css), [script.js](file:///d:/about%20me/script.js)
 
+### 7. 🎬 Cinematic Video Showcase Banner Layout
+- **What it does:** Replaced the multi-column video grid with a widescreen single-column banner format. Each video card follows a cinematic ratio: **1983px × 793px (≈ 2.5:1 ratio)** with responsive scaling and `object-fit: cover` for video thumbnails.
+- **Files Modified:** [index.html](file:///d:/about%20me/index.html), [style.css](file:///d:/about%20me/style.css)
+
+### 8. 🏆 Achievements Image Carousel expansion (6 Slides)
+- **What it does:** Integrated 3 new high-quality event photos as Slides 4, 5, and 6 in the Achievements carousel while fully preserving the original 3 certificate images. Expanded the indicator dots count to 6.
+- **Files Modified:** [index.html](file:///d:/about%20me/index.html)
+
 ---
 
 ## 🚀 Live Production URL

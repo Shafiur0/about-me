@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initVideoSection();
     initMemoriesGallery();
     initMobileMenu();
+    initCrewLightbox();
 });
 
 /* ==========================================================================
@@ -782,9 +783,21 @@ function initCliTerminal() {
                         "  bio       - Render quick summary biography.\n" +
                         "  skills    - List programming stack and frameworks.\n" +
                         "  projects  - Show active codebase coordinates.\n" +
+                        "  crew      - List Cortex Crew team roster coordinates.\n" +
                         "  hack      - Execute matrix threat simulation display.\n" +
                         "  clear     - Wipe shell scroll logging history.\n" +
                         "  minimize  - Drop shell terminal link to background."
+                    );
+                    break;
+                case 'crew':
+                case 'team':
+                    writeOutput(
+                        "Team Cortex Crew Roster & Coordinates:\n" +
+                        "  - Shafiur Rahman Shafim : AI & Software Developer\n" +
+                        "  - Md Kawser Ahmed       : Software Engineer (AI & Cyber Security)\n" +
+                        "  - Arnob Kumar Paul      : Software Engineer & CP\n" +
+                        "  - Abu Fahad Biddut      : Software Engineer & IoT Dev\n" +
+                        "  - Al Fahad              : Visualizer & Packaging Designer"
                     );
                     break;
                 case 'bio':
@@ -1463,6 +1476,35 @@ function initMobileMenu() {
         if (e.target === menuOverlay) {
             closeMenu();
         }
+    });
+}
+
+/* ==========================================================================
+   Cortex Crew Interactive Lightbox
+   ========================================================================== */
+function initCrewLightbox() {
+    const cards = document.querySelectorAll('.crew-achievement-card');
+    const lightbox = document.getElementById('lightbox-modal');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+
+    if (!lightbox || !lightboxImg) return;
+
+    cards.forEach(card => {
+        const wrapper = card.querySelector('.crew-achievement-preview-wrapper');
+        const img = card.querySelector('.crew-achievement-img');
+        if (!wrapper || !img) return;
+
+        wrapper.addEventListener('click', (e) => {
+            e.stopPropagation();
+            lightboxImg.src = img.src;
+            lightboxCaption.textContent = img.alt;
+            lightbox.style.display = 'flex';
+            
+            setTimeout(() => {
+                lightbox.classList.add('open');
+            }, 10);
+        });
     });
 }
 

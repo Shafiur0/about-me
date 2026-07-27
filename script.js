@@ -226,7 +226,7 @@ function initScrollReveal() {
     
     const observerOptions = {
         root: null, // viewport
-        threshold: 0.12, // triggers when 12% is visible
+        threshold: 0.02, // triggers when 2% is visible
         rootMargin: "0px 0px -50px 0px" // triggers slightly before screen entry
     };
 

@@ -3100,10 +3100,8 @@ a:hover {
    ========================================================================== */
 
 /* Universal Box and Scroll Overflow Fixes */
-html, body {
-    width: 100%;
+body {
     max-width: 100%;
-    overflow-x: hidden;
 }
 
 /* Mobile Hamburger Menu Toggle Button */

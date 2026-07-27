@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initProjectVideoButtons();
     initVideoSection();
     initMemoriesGallery();
+    initMobileMenu();
 });
 
 /* ==========================================================================
@@ -1416,6 +1417,52 @@ function initMemoriesGallery() {
                 lightbox.classList.add('open');
             }, 10);
         });
+    });
+}
+
+/* ==========================================================================
+   Mobile Navigation Menu Drawer Logic
+   ========================================================================== */
+function initMobileMenu() {
+    const toggleBtn = document.getElementById('mobile-menu-toggle');
+    const closeBtn = document.getElementById('mobile-menu-close');
+    const menuOverlay = document.getElementById('mobile-menu-overlay');
+    const navLinks = document.querySelectorAll('.mobile-nav-link');
+    const uplinkLink = document.querySelector('.mobile-menu-uplink');
+
+    if (!toggleBtn || !closeBtn || !menuOverlay) return;
+
+    function openMenu() {
+        menuOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden'; // prevent scrolling behind menu
+    }
+
+    function closeMenu() {
+        menuOverlay.classList.remove('active');
+        document.body.style.overflow = ''; // restore scrolling
+    }
+
+    toggleBtn.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+
+    // Close menu when clicking navigation links
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            closeMenu();
+        });
+    });
+
+    if (uplinkLink) {
+        uplinkLink.addEventListener('click', () => {
+            closeMenu();
+        });
+    }
+
+    // Close menu if user clicks outside of the menu container
+    menuOverlay.addEventListener('click', (e) => {
+        if (e.target === menuOverlay) {
+            closeMenu();
+        }
     });
 }
 

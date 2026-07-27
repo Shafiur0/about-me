@@ -75,6 +75,10 @@
                 <span class="system-status"><span class="status-pulse"></span> ONLINE</span>
                 <a href="#contact" class="btn btn-nav">UPLINK</a>
             </div>
+
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
         </div>
     </header>
 
@@ -469,6 +473,8 @@
                             </div>
                             <div class="chart-legend" id="chart-legend"></div>
                         </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1947,6 +1953,33 @@
         <span class="lightbox-close" id="lightbox-close">&times;</span>
         <img class="lightbox-content" id="lightbox-img" src="" alt="Zoomed Achievement">
         <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+
+    <!-- Mobile Navigation Menu Overlay -->
+    <div id="mobile-menu-overlay" class="mobile-menu-overlay">
+        <div class="mobile-menu-header">
+            <div class="header-logo">
+                <i class="fa-solid fa-terminal logo-icon"></i>
+                <span class="logo-text">SHAFIM<span class="logo-accent">_WIKI</span></span>
+            </div>
+            <button id="mobile-menu-close" class="mobile-menu-close" aria-label="Close Menu">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <nav class="mobile-menu-nav">
+            <a href="#biography" class="mobile-nav-link"><span class="nav-num">01.</span> Bio</a>
+            <a href="#skills" class="mobile-nav-link"><span class="nav-num">02.</span> Skills</a>
+            <a href="#projects" class="mobile-nav-link"><span class="nav-num">03.</span> Projects</a>
+            <a href="#achievements" class="mobile-nav-link"><span class="nav-num">04.</span> Achievements</a>
+            <a href="#certificates" class="mobile-nav-link"><span class="nav-num">05.</span> Certificates</a>
+            <a href="#videos" class="mobile-nav-link"><span class="nav-num">06.</span> Videos</a>
+            <a href="#memories" class="mobile-nav-link"><span class="nav-num">07.</span> Memories</a>
+            <a href="#contact" class="mobile-nav-link"><span class="nav-num">08.</span> Contact</a>
+        </nav>
+        <div class="mobile-menu-footer">
+            <span class="system-status"><span class="status-pulse"></span> ONLINE</span>
+            <a href="#contact" class="btn btn-nav mobile-menu-uplink">UPLINK</a>
+        </div>
     </div>
 
     <!-- Custom Script -->

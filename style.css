@@ -2176,6 +2176,35 @@ body.light-theme .timeline-container::before {
     text-shadow: 0 0 5px rgba(171, 38, 255, 0.3);
 }
 
+.wiki-cv-btn {
+    background: transparent;
+    border: none;
+    color: var(--color-wiki-blue);
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 0;
+    border-bottom: 1px dotted var(--color-wiki-blue);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: var(--transition-fast);
+    text-decoration: none;
+}
+
+.wiki-cv-btn:hover {
+    color: var(--neon-purple);
+    border-bottom: 1px solid var(--neon-purple);
+    text-shadow: 0 0 5px rgba(171, 38, 255, 0.3);
+}
+
+.infobox-toolbox-btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    align-items: center;
+}
+
 .modal-overlay {
     position: fixed;
     top: 0;

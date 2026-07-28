@@ -42,6 +42,14 @@ I have successfully designed, built, and verified five premium interactive featu
 - **What it does:** Integrated 3 new high-quality event photos as Slides 4, 5, and 6 in the Achievements carousel while fully preserving the original 3 certificate images. Expanded the indicator dots count to 6.
 - **Files Modified:** [index.html](file:///d:/about%20me/index.html)
 
+### 9. 🗂️ Section Reordering (Bio -> Skills -> Projects -> Achievements -> Certificates -> Team -> Videos -> Memories -> Contact)
+- **What it does:** Reordered the sections in both the HTML flow and the navigation links (main header, mobile menu overlay, and Table of Contents box).
+  - **Team (Cortex Crew)** is now section **06**.
+  - **Videos** is now section **07**.
+  - **Memories** is now section **08**.
+  - Section headers, numbers, and navigation targets were updated to match this sequence.
+- **Files Modified:** [index.html](file:///d:/about%20me/index.html), [walkthrough.md](file:///d:/about%20me/walkthrough.md)
+
 ---
 
 ## 🚀 Live Production URL

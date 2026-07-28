@@ -395,11 +395,26 @@
                     Shafim's technical skills are categorized below, highlighting specialized development capabilities, programming paradigms, and operational toolsets.
                 </p>
                 
+                <!-- Skills Search & Filters -->
+                <div class="skills-filter-container">
+                    <div class="skills-search-wrapper">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        <input type="text" id="skills-search" placeholder="Type keyword to filter skills (e.g., Node, testing, python)..." aria-label="Search Skills">
+                    </div>
+                    <div class="skills-tag-filters">
+                        <button class="skills-filter-btn active" data-filter="all">ALL_SKILLS</button>
+                        <button class="skills-filter-btn" data-filter="dev">DEVELOPMENT</button>
+                        <button class="skills-filter-btn" data-filter="lang">LANGUAGES</button>
+                        <button class="skills-filter-btn" data-filter="db">DATABASES</button>
+                        <button class="skills-filter-btn" data-filter="qa-cyber">QA_&_SECURITY</button>
+                    </div>
+                </div>
+
                 <div class="skills-layout-container">
                     <div class="skills-left-col">
                         <div class="skills-grid">
                             <!-- Frontend -->
-                            <div class="skill-category-card">
+                            <div class="skill-category-card" data-category="dev">
                                 <div class="category-header">
                                     <i class="fa-solid fa-desktop category-icon"></i>
                                     <h3>Frontend Development</h3>
@@ -414,7 +429,7 @@
                             </div>
 
                             <!-- Backend -->
-                            <div class="skill-category-card">
+                            <div class="skill-category-card" data-category="dev">
                                 <div class="category-header">
                                     <i class="fa-solid fa-server category-icon"></i>
                                     <h3>Backend Architecture</h3>
@@ -427,7 +442,7 @@
                             </div>
 
                             <!-- Programming -->
-                            <div class="skill-category-card">
+                            <div class="skill-category-card" data-category="lang">
                                 <div class="category-header">
                                     <i class="fa-solid fa-code category-icon"></i>
                                     <h3>Programming Languages</h3>
@@ -440,7 +455,7 @@
                             </div>
 
                             <!-- Database -->
-                            <div class="skill-category-card">
+                            <div class="skill-category-card" data-category="db">
                                 <div class="category-header">
                                     <i class="fa-solid fa-circle-nodes category-icon"></i>
                                     <h3>Database Systems</h3>
@@ -452,7 +467,7 @@
                             </div>
 
                             <!-- Other -->
-                            <div class="skill-category-card full-width-card">
+                            <div class="skill-category-card full-width-card" data-category="qa-cyber">
                                 <div class="category-header">
                                     <i class="fa-solid fa-shield-halved category-icon"></i>
                                     <h3>Other Systems & Specialized Tools</h3>

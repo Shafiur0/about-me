@@ -3650,3 +3650,136 @@ body.light-theme .grid-container,
 body.light-theme .contents-header {
     border-bottom: var(--glass-border);
 }
+
+/* ==========================================================================
+   Skills Interactive Search & Filters
+   ========================================================================== */
+.skills-filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: rgba(10, 10, 15, 0.3);
+    border: var(--glass-border);
+    border-radius: 6px;
+    width: 100%;
+}
+
+body.light-theme .skills-filter-container {
+    background: rgba(224, 233, 241, 0.3);
+}
+
+.skills-search-wrapper {
+    position: relative;
+    flex: 1 1 320px;
+    display: flex;
+    align-items: center;
+}
+
+.skills-search-wrapper .search-icon {
+    position: absolute;
+    left: 1rem;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    pointer-events: none;
+    transition: var(--transition-fast);
+}
+
+#skills-search {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.25);
+    border: var(--glass-border);
+    border-radius: 4px;
+    padding: 0.65rem 1rem 0.65rem 2.5rem;
+    color: var(--color-text-primary);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    transition: var(--transition-normal);
+}
+
+body.light-theme #skills-search {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+#skills-search:focus {
+    outline: none;
+    border-color: var(--neon-cyan);
+    box-shadow: var(--shadow-cyan);
+}
+
+#skills-search:focus + .search-icon {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 8px var(--neon-cyan);
+}
+
+.skills-tag-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.skills-filter-btn {
+    background: transparent;
+    border: var(--glass-border);
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.skills-filter-btn:hover {
+    color: var(--neon-cyan);
+    border-color: var(--neon-cyan);
+    box-shadow: var(--shadow-cyan);
+}
+
+.skills-filter-btn.active {
+    color: var(--color-bg);
+    background: var(--neon-cyan);
+    border-color: var(--neon-cyan);
+    box-shadow: var(--shadow-cyan);
+    font-weight: 700;
+}
+
+body.light-theme .skills-filter-btn.active {
+    color: #fff;
+}
+
+/* Dimmed & Highlighted States for interactive search */
+.skill-category-card {
+    transition: opacity var(--transition-normal), transform var(--transition-normal), border-color var(--transition-normal);
+}
+
+.skill-category-card.dimmed {
+    opacity: 0.15;
+    pointer-events: none;
+    transform: scale(0.98);
+}
+
+.skill-badge {
+    transition: opacity var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+    border: 1px solid transparent;
+}
+
+.skill-badge.dimmed {
+    opacity: 0.3;
+}
+
+.skill-badge.highlighted {
+    opacity: 1 !important;
+    border-color: var(--neon-cyan) !important;
+    box-shadow: var(--shadow-cyan) !important;
+    color: var(--neon-cyan) !important;
+    background: rgba(0, 240, 255, 0.08) !important;
+}
+
+body.light-theme .skill-badge.highlighted {
+    background: rgba(2, 132, 199, 0.08) !important;
+}

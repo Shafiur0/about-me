@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCustomCursor();
     initScrollReveal();
     initProjectFilters();
+    initSkillsFilter();
     initContactForm();
     initWikiContents();
     initFooterTime();
@@ -1560,6 +1561,86 @@ function initThemeToggle() {
     desktopToggleBtn.addEventListener('click', toggleTheme);
     if (mobileToggleBtn) {
         mobileToggleBtn.addEventListener('click', toggleTheme);
+    }
+}
+
+/* ==========================================================================
+   Skills Interactive Search & Filters Logic
+   ========================================================================== */
+function initSkillsFilter() {
+    const searchInput = document.getElementById('skills-search');
+    const filterBtns = document.querySelectorAll('.skills-filter-btn');
+    const cards = document.querySelectorAll('.skill-category-card');
+    
+    if (!searchInput || filterBtns.length === 0 || cards.length === 0) return;
+    
+    let activeCategory = 'all';
+    let searchTerm = '';
+    
+    // Category filter click handler
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            activeCategory = btn.getAttribute('data-filter');
+            applyFilters();
+        });
+    });
+    
+    // Search input handler
+    searchInput.addEventListener('input', (e) => {
+        searchTerm = e.target.value.toLowerCase().trim();
+        applyFilters();
+    });
+    
+    function applyFilters() {
+        cards.forEach(card => {
+            const cardCategory = card.getAttribute('data-category');
+            const categoryMatches = (activeCategory === 'all' || cardCategory === activeCategory);
+            
+            const badges = card.querySelectorAll('.skill-badge');
+            const cardTitle = card.querySelector('h3').textContent.toLowerCase();
+            
+            if (searchTerm === '') {
+                // Reset badge highlights/dimming
+                badges.forEach(badge => {
+                    badge.classList.remove('dimmed', 'highlighted');
+                });
+                
+                // Toggle card visibility based solely on category
+                if (categoryMatches) {
+                    card.classList.remove('dimmed');
+                } else {
+                    card.classList.add('dimmed');
+                }
+            } else {
+                let cardHasMatch = cardTitle.includes(searchTerm);
+                
+                badges.forEach(badge => {
+                    const badgeText = badge.textContent.toLowerCase();
+                    if (badgeText.includes(searchTerm)) {
+                        badge.classList.add('highlighted');
+                        badge.classList.remove('dimmed');
+                        cardHasMatch = true;
+                    } else {
+                        badge.classList.remove('highlighted');
+                        badge.classList.add('dimmed');
+                    }
+                });
+                
+                // Show card if it matches the active category AND has at least one search match
+                if (categoryMatches && cardHasMatch) {
+                    card.classList.remove('dimmed');
+                } else {
+                    card.classList.add('dimmed');
+                    // Dim all badges if the entire card is filtered out
+                    badges.forEach(badge => {
+                        badge.classList.remove('highlighted');
+                        badge.classList.add('dimmed');
+                    });
+                }
+            }
+        });
     }
 }
 

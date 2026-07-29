@@ -623,12 +623,28 @@ a:hover {
     font-size: 0.85rem;
 }
 
+.social-btn svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+    transition: var(--transition-normal);
+}
+
 .social-btn:hover {
     color: var(--neon-cyan);
     background: rgba(0, 240, 255, 0.08);
     border-color: rgba(0, 240, 255, 0.4);
     box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
     transform: translateY(-2px);
+}
+
+.contact-link-icon-svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--neon-cyan);
+    filter: drop-shadow(0 0 5px rgba(0, 240, 255, 0.3));
+    display: inline-block;
+    flex-shrink: 0;
 }
 
 @media (max-width: 800px) {

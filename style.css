@@ -4018,3 +4018,63 @@ body.light-theme .skills-filter-btn.active {
 body.light-theme .skill-badge.highlighted {
     background: rgba(2, 132, 199, 0.08) !important;
 }
+
+/* Certificates Interactive Filters */
+.cert-filter-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 0.8rem;
+    background: rgba(10, 10, 15, 0.3);
+    border: var(--glass-border);
+    border-radius: 6px;
+    width: 100%;
+}
+
+body.light-theme .cert-filter-container {
+    background: rgba(224, 233, 241, 0.3);
+}
+
+.cert-tag-filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.cert-filter-btn {
+    background: transparent;
+    border: var(--glass-border);
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.cert-filter-btn:hover {
+    color: var(--neon-cyan);
+    border-color: var(--neon-cyan);
+    box-shadow: var(--shadow-cyan);
+}
+
+.cert-filter-btn.active {
+    color: var(--color-bg);
+    background: var(--neon-cyan);
+    border-color: var(--neon-cyan);
+    box-shadow: var(--shadow-cyan);
+    font-weight: 700;
+}
+
+body.light-theme .cert-filter-btn.active {
+    color: #fff;
+}
+
+/* Certificate Transition & Grid update style */
+.cert-card.hidden {
+    display: none;
+}

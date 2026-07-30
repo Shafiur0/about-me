@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initAchievementsCarousel();
     initBioGallery();
     initCertificatesLightbox();
+    initCertificatesFilter();
     initProjectVideoButtons();
     initVideoSection();
     initMemoriesGallery();
@@ -1642,6 +1643,34 @@ function initSkillsFilter() {
             }
         });
     }
+}
+
+function initCertificatesFilter() {
+    const filterBtns = document.querySelectorAll('.cert-filter-btn');
+    const cards = document.querySelectorAll('.certificates-grid .cert-card');
+    
+    if (filterBtns.length === 0 || cards.length === 0) return;
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all buttons and add to the clicked one
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            const activeFilter = btn.getAttribute('data-filter');
+            
+            // Loop through all certificate cards
+            cards.forEach(card => {
+                const cardCategory = card.getAttribute('data-category');
+                
+                if (activeFilter === 'all' || cardCategory === activeFilter) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        });
+    });
 }
 
 

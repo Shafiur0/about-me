@@ -4,7 +4,6 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    initThemeToggle();
     initScrollProgress();
     initTypewriter();
     initParticles();
@@ -1511,59 +1510,6 @@ function initCrewLightbox() {
     });
 }
 
-/* ==========================================================================
-   Dark / Light Theme Toggle Logic
-   ========================================================================== */
-function initThemeToggle() {
-    const desktopToggleBtn = document.getElementById('theme-toggle');
-    const mobileToggleBtn = document.getElementById('mobile-theme-toggle');
-    
-    if (!desktopToggleBtn) return;
-    
-    // Check local storage or system preference
-    const savedTheme = localStorage.getItem('theme');
-    const userPrefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-    
-    if (savedTheme === 'light' || (!savedTheme && userPrefersLight)) {
-        document.body.classList.add('light-theme');
-        updateIcons(true);
-    } else {
-        document.body.classList.remove('light-theme');
-        updateIcons(false);
-    }
-    
-    function toggleTheme() {
-        const isLight = document.body.classList.toggle('light-theme');
-        localStorage.setItem('theme', isLight ? 'light' : 'dark');
-        updateIcons(isLight);
-    }
-    
-    function updateIcons(isLight) {
-        const desktopIcon = desktopToggleBtn.querySelector('i');
-        const mobileIcon = mobileToggleBtn ? mobileToggleBtn.querySelector('i') : null;
-        
-        if (isLight) {
-            if (desktopIcon) {
-                desktopIcon.className = 'fa-solid fa-sun';
-            }
-            if (mobileIcon) {
-                mobileIcon.className = 'fa-solid fa-sun';
-            }
-        } else {
-            if (desktopIcon) {
-                desktopIcon.className = 'fa-solid fa-moon';
-            }
-            if (mobileIcon) {
-                mobileIcon.className = 'fa-solid fa-moon';
-            }
-        }
-    }
-    
-    desktopToggleBtn.addEventListener('click', toggleTheme);
-    if (mobileToggleBtn) {
-        mobileToggleBtn.addEventListener('click', toggleTheme);
-    }
-}
 
 /* ==========================================================================
    Skills Interactive Search & Filters Logic

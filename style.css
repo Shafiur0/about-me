@@ -40,30 +40,6 @@
     --transition-normal: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-body.light-theme {
-    --color-bg: #eef4f8;
-    --color-bg-secondary: #e0e9f1;
-    --color-card-bg: rgba(255, 255, 255, 0.88);
-    --color-text-primary: #1e293b;
-    --color-text-secondary: #475569;
-    --color-text-muted: #64748b;
-    --color-text-title: #0f172a;
-    --color-wiki-blue: #0284c7;
-    --color-header-bg: rgba(238, 244, 248, 0.88);
-    --color-border-grid: rgba(2, 132, 199, 0.08);
-    
-    /* Neon Accents adapted for light mode readability */
-    --neon-cyan: #0284c7;
-    --neon-purple: #6d28d9;
-    --neon-pink: #db2777;
-    
-    /* Shadows & Borders */
-    --shadow-cyan: 0 0 12px rgba(2, 132, 199, 0.12);
-    --shadow-purple: 0 0 12px rgba(109, 40, 217, 0.12);
-    --neon-border-cyan: 1px solid rgba(2, 132, 199, 0.22);
-    --neon-border-purple: 1px solid rgba(109, 40, 217, 0.22);
-    --glass-border: 1px solid rgba(2, 132, 199, 0.12);
-}
 
 /* ==========================================================================
    Base & Reset Styles
@@ -1121,13 +1097,6 @@ a:hover {
     z-index: 1;
 }
 
-body.light-theme .timeline-container::before {
-    background: linear-gradient(180deg, 
-        rgba(109, 40, 217, 0.1) 0%, 
-        var(--neon-purple) 15%, 
-        var(--neon-cyan) 85%, 
-        rgba(2, 132, 199, 0.1) 100%);
-}
 
 .timeline-year-checkpoint {
     position: relative;
@@ -1280,9 +1249,6 @@ body.light-theme .timeline-container::before {
         box-shadow: var(--shadow-cyan);
     }
 
-    body.light-theme .timeline-item:hover .timeline-content-card {
-        border-color: rgba(2, 132, 199, 0.25);
-    }
     
     .timeline-item.left-aligned:hover .timeline-content-card {
         transform: translateX(-6px);
@@ -3797,94 +3763,6 @@ body {
     }
 }
 
-/* ==========================================================================
-   Light / Dark Theme Override & Toggle styling
-   ========================================================================== */
-.theme-toggle-btn {
-    background: transparent;
-    border: 1px solid var(--color-text-muted);
-    color: var(--color-text-primary);
-    width: 34px;
-    height: 34px;
-    border-radius: 4px;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.95rem;
-    transition: var(--transition-fast);
-}
-
-.theme-toggle-btn:hover {
-    border-color: var(--neon-cyan);
-    color: var(--neon-cyan);
-    box-shadow: var(--shadow-cyan);
-    text-shadow: 0 0 8px var(--neon-cyan);
-}
-
-/* Light Theme Overrides */
-body.light-theme {
-    background-color: var(--color-bg);
-}
-
-body.light-theme .scroll-progress-bar {
-    box-shadow: 0 0 10px rgba(2, 132, 199, 0.4);
-}
-
-body.light-theme .main-header {
-    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
-}
-
-body.light-theme .infobox {
-    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
-}
-
-body.light-theme .infobox-header {
-    color: var(--neon-purple);
-    background: rgba(109, 40, 217, 0.08);
-    border: 1px solid rgba(109, 40, 217, 0.15);
-}
-
-body.light-theme .mobile-menu-overlay {
-    background: rgba(248, 250, 252, 0.98);
-    box-shadow: -10px 0 30px rgba(15, 23, 42, 0.15), var(--shadow-purple);
-}
-
-body.light-theme .mobile-menu-header {
-    border-bottom: var(--glass-border);
-}
-
-body.light-theme .mobile-nav-link:hover,
-body.light-theme .mobile-nav-link.active {
-    color: var(--neon-purple);
-}
-
-/* Terminal Adjustments in Light Theme */
-body.light-theme .terminal-container {
-    background: rgba(13, 13, 20, 0.96);
-    border: 1px solid rgba(15, 23, 42, 0.15);
-    box-shadow: 0 15px 40px rgba(15, 23, 42, 0.2);
-}
-
-body.light-theme .terminal-toggle-btn {
-    background: #0f172a;
-    color: #e2e8f0;
-    border: 1px solid rgba(2, 132, 199, 0.3);
-}
-
-/* Radar chart style adaptation in light mode */
-body.light-theme .radar-grid-line {
-    stroke: rgba(15, 23, 42, 0.08);
-}
-body.light-theme .radar-grid-web {
-    fill: rgba(15, 23, 42, 0.02);
-}
-
-/* Widescreen and structural grids style adaptation */
-body.light-theme .grid-container,
-body.light-theme .contents-header {
-    border-bottom: var(--glass-border);
-}
 
 /* ==========================================================================
    Skills Interactive Search & Filters
@@ -3903,9 +3781,6 @@ body.light-theme .contents-header {
     width: 100%;
 }
 
-body.light-theme .skills-filter-container {
-    background: rgba(224, 233, 241, 0.3);
-}
 
 .skills-search-wrapper {
     position: relative;
@@ -3935,9 +3810,6 @@ body.light-theme .skills-filter-container {
     transition: var(--transition-normal);
 }
 
-body.light-theme #skills-search {
-    background: rgba(255, 255, 255, 0.7);
-}
 
 #skills-search:focus {
     outline: none;
@@ -3983,9 +3855,6 @@ body.light-theme #skills-search {
     font-weight: 700;
 }
 
-body.light-theme .skills-filter-btn.active {
-    color: #fff;
-}
 
 /* Dimmed & Highlighted States for interactive search */
 .skill-category-card {
@@ -4015,9 +3884,6 @@ body.light-theme .skills-filter-btn.active {
     background: rgba(0, 240, 255, 0.08) !important;
 }
 
-body.light-theme .skill-badge.highlighted {
-    background: rgba(2, 132, 199, 0.08) !important;
-}
 
 /* Certificates Interactive Filters */
 .cert-filter-container {
@@ -4032,9 +3898,6 @@ body.light-theme .skill-badge.highlighted {
     width: 100%;
 }
 
-body.light-theme .cert-filter-container {
-    background: rgba(224, 233, 241, 0.3);
-}
 
 .cert-tag-filters {
     display: flex;
@@ -4070,9 +3933,6 @@ body.light-theme .cert-filter-container {
     font-weight: 700;
 }
 
-body.light-theme .cert-filter-btn.active {
-    color: #fff;
-}
 
 /* Certificate Transition & Grid update style */
 .cert-card.hidden {
